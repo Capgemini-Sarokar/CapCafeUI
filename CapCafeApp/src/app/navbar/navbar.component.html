@@ -1,30 +1,46 @@
-<nav class="nav">
-    <!-- Navbar content -->
-    <ul class="nav justify-content-center">
-        <li class="nav-item">
-          <a class="nav-link " routerLink="/cafe">Cafe</a>
-        </li>
-        
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/menu">Menu</a>
-        </li>
+<!--
+    nav bar items:
+    cafe
+    menu
+    helpdesk
+    reviews
+    orders
 
-        <li class="nav-item">
-          <a class="nav-link " routerLink="/orders">Orders</a>
-        </li>
+    right side
+    login / sign up
+-->
 
-        <li class="nav-item">
-            <a class="nav-link " routerLink="/helpdesk">Helpdesk</a>
-        </li>  
-        
-        <li class="nav-item">
-            <a class="nav-link " routerLink="/reviews">Reviews</a>
-          </li>
-
-       
-        <li class="nav-item">
-          <a class="nav-link " routerLink="/login">Sign-up & Login</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
         </li>
-       
+        <li class="nav-item">
+          <a class="nav-link" href="#">Cafe</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Menu</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Helpdesk</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Reviews</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Orders</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Signup</a>
+        </li>
       </ul>
+    </div>
   </nav>
