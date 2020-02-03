@@ -7,12 +7,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { CafeComponent } from './cafe/cafe.component';
+import { HelpdeskComponent } from './helpdesk/helpdesk.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    CafeComponent
+    CafeComponent,
+    HelpdeskComponent
   ],
   imports: [
     BrowserModule,
