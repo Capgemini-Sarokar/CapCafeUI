@@ -1,1 +1,25 @@
 <p>remove-cafe works!</p>
+<div class="container">
+    <h2>Remove cafe</h2>
+    <form action="/action_page.php" class="was-validated">
+        <div class="form-group">
+            <label for="cafeID">Cafe ID:</label>
+            <input type="text" class="form-control" id="cafeID" placeholder="Enter cafeID" name="cafeID" required>
+            <div class="valid-feedback">Valid.</div>
+            <div class="invalid-feedback">Please fill out this field.</div>
+          </div>
+        <div class="form-group">
+        <label for="cafename">Cafe Name:</label>
+        <input type="text" class="form-control" id="cafename" placeholder="" name="cafename" disabled>
+      </div>
+      <div class="form-group">
+        <label for="owner">Cafe owner:</label>
+        <input type="text" class="form-control" id="owner" placeholder="" name="owner" disabled>
+      </div>
+      <div class="form-group">
+        <label for="location">Cafe location:</label>
+        <input type="text" class="form-control" id="location" placeholder="" name="location" disabled>
+      </div>
+      <button type="submit" class="btn btn-primary">Remove Cafe</button>
+    </form>
+  </div>
