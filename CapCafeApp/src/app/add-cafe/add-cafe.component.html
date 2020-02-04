@@ -1,11 +1,9 @@
 <div class="container">
     <h2>Add a new cafe</h2>
-    <form action="/action_page.php" class="was-validated">
+    <form action="/action_page.php">
         <div class="form-group">
             <label for="cafeID">Cafe ID:</label>
-            <input type="text" class="form-control" id="cafeID" placeholder="Enter cafeID" name="cafeID" required>
-            <div class="valid-feedback">Valid.</div>
-            <div class="invalid-feedback">Please fill out this field.</div>
+            <input type="text" class="form-control" id="cafeID" placeholder="Enter cafeID" name="cafeID" minlength="10" maxlength="10" required>
           </div>
         <div class="form-group">
         <label for="cafename">Cafe Name:</label>
