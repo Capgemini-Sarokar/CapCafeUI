@@ -18,23 +18,61 @@
         </li>
         
         <li class="nav-item">
-          
-          <a class="nav-link" routerLink="/menu">Menu</a>
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Menu
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><a routerLink="/add-menu">Add Menu</a></li>
+              
+              <li><a routerLink="/remove-menu">Remove Menu</a></li>
+              
+              <li><a routerLink="/update-menu">Update Menu</a></li>
+              
+              <li><a routerLink="/view-menu">View Menu</a></li>
+            </ul>
+          </div>
         </li>
 
         <li class="nav-item">
-         
-          <a class="nav-link " routerLink="/orders">Orders</a>
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Orders
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><a routerLink="/">Link1</a></li>
+              
+              <li><a routerLink="/">Link2</a></li>
+              
+              <li><a routerLink="/">Link3</a></li>
+              
+              <li><a routerLink="/">Link4</a></li>
+            </ul>
+          </div>
         </li>
 
         <li class="nav-item">
-          
-            <a class="nav-link " routerLink="/helpdesk">Helpdesk</a>
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">HelpDesk
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><a routerLink="/helpdesk">Raise ticket</a></li>
+              
+              <li><a routerLink="/">View ticket</a></li>
+            
+            </ul>
+          </div>
         </li>  
         
         <li class="nav-item">
-          
-          <a class="nav-link " routerLink="/reviews">Reviews</a>
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Reviews
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+              <li><a routerLink="/">Show review & ratings</a></li>
+              
+              <li><a routerLink="/">Add review & ratings</a></li>
+            
+            </ul>
+          </div>
           </li>
 
        

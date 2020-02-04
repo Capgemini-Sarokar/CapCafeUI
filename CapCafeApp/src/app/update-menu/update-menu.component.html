@@ -1,1 +1,27 @@
-<p>update-menu works!</p>
+<p>update-cafe works!</p>
+<div class="container">
+    <h2>Update cafe</h2>
+    <form action="/action_page.php">
+        <div class="form-group">
+            <label for="cafeID">Cafe ID:</label>
+            <input type="text" class="form-control" id="cafeID" placeholder="Enter cafeID" name="cafeID" minlength="10" maxlength="10" required>
+            <div class="valid-feedback"></div>
+          </div>
+        <div class="form-group">
+        <label for="cafename">Cafe Name:</label>
+        <input type="text" class="form-control" id="cafename" placeholder="cafe name" name="cafename">
+        <small id="cafename" class="form-text text-muted">Edit this field.</small>
+      </div>
+      <div class="form-group">
+        <label for="owner">Cafe owner:</label>
+        <input type="text" class="form-control" id="owner" placeholder="owner name" name="owner">
+        <small id="cafename" class="form-text text-muted">Edit this field.</small>
+      </div>
+      <div class="form-group">
+        <label for="location">Cafe location:</label>
+        <input type="text" class="form-control" id="location" placeholder="cafe location" name="location">
+        <small id="cafename" class="form-text text-muted">Edit this field.</small>
+      </div>
+      <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+  </div>
