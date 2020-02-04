@@ -11,6 +11,10 @@ import { AddCafeComponent } from './add-cafe/add-cafe.component';
 import { RemoveCafeComponent } from './remove-cafe/remove-cafe.component';
 import { UpdateCafeComponent } from './update-cafe/update-cafe.component';
 import { ViewCafeComponent } from './view-cafe/view-cafe.component';
+import { AddMenuComponent } from './add-menu/add-menu.component';
+import { RemoveMenuComponent } from './remove-menu/remove-menu.component';
+import { UpdateMenuComponent } from './update-menu/update-menu.component';
+import { ViewMenuComponent } from './view-menu/view-menu.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,11 @@ import { ViewCafeComponent } from './view-cafe/view-cafe.component';
     AddCafeComponent,
     RemoveCafeComponent,
     UpdateCafeComponent,
-    ViewCafeComponent
+    ViewCafeComponent,
+    AddMenuComponent,
+    RemoveMenuComponent,
+    UpdateMenuComponent,
+    ViewMenuComponent
   ],
   imports: [
     BrowserModule,
