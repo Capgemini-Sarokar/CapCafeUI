@@ -4,12 +4,17 @@
         <form [formGroup]="form" (ngSubmit)="submit()">
             <p>
                 <mat-form-field>
-                    <input type="text" matInput placeholder="Employee ID" formControlName="employeeid" required>
+                    <input type="text" matInput placeholder="Employee ID" formControlName="employeeId" required>
                 </mat-form-field>
             </p>
             <p>
                 <mat-form-field>
-                    <input type="email" matInput placeholder="Email ID" formControlName="emailid" pattern="[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}" required>
+                    <input type="email" matInput placeholder="Email ID" formControlName="emailId" pattern="[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}" required>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <input type="text" matInput placeholder="Password" formControlName="password" required>
                 </mat-form-field>
             </p>
             <p>
@@ -19,15 +24,24 @@
             </p>
             <p>
                 <mat-form-field>
-                    <input type="text" matInput placeholder="Phone Number" formControlName="phonenumber" maxlength="10" pattern="[0-9]*" required>
+                    <input type="text" matInput placeholder="Phone Number" formControlName="phoneNumber" maxlength="10" pattern="[0-9]*" required>
                 </mat-form-field>
             </p>
             <p>
                 <mat-form-field>
-                    <input matInput [matDatepicker]="picker" placeholder="Date Of Birth" formControlName="dateofbirth" required>
+                    <input matInput [matDatepicker]="picker" placeholder="Date Of Birth" formControlName="dateOfBirth" required>
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker startView="year" [startAt]="1940"></mat-datepicker>
                 </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <mat-label>User Role</mat-label>
+                    <mat-select placeholder="User Role" formControlName="userRole">
+                      <mat-option value="admin">Admin</mat-option>
+                      <mat-option value="customer">General User</mat-option>
+                    </mat-select>
+                  </mat-form-field>
             </p>
             <p *ngIf="error" class="error">
                 {{ error }}

@@ -10,11 +10,13 @@ import { RegistrationService } from '../registration.service';
 })
 export class RegistrationComponent {
   form: FormGroup = new FormGroup({
-    employeeid: new FormControl(''),
-    emailid: new FormControl(''),
+    employeeId: new FormControl(''),
+    emailId: new FormControl(''),
+    password: new FormControl(''),
     name: new FormControl(''),
-    phonenumber: new FormControl(''),
-    dateofbirth: new FormControl('')
+    phoneNumber: new FormControl(''),
+    dateOfBirth: new FormControl(''),
+    userRole: new FormControl('')
   });
 
   submit() {
