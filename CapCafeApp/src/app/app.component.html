@@ -1,2 +1,18 @@
-<app-navbar></app-navbar>
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <span routerLink="/">Capgemini Cafe</span>
+        <span class="fill-remaining-space"></span>
+        <button mat-button routerLink="/helpdesk">Help Desk</button>
+        <button mat-button>About</button>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item routerLink="/loginRegistration">
+                <mat-icon>power_settings_new</mat-icon>
+                <span>Login</span>
+            </button>
+        </mat-menu>
+    </mat-toolbar-row>
+</mat-toolbar>
 <router-outlet></router-outlet>

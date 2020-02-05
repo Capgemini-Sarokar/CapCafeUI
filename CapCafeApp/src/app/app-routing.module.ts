@@ -1,17 +1,23 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CafeComponent } from './cafe/cafe.component';
-import { HelpdeskComponent } from './helpdesk/helpdesk.component';
-import { LoginSignupComponent } from './login-signup/login-signup.component';
 
-const routes: Routes = [
-  { path:'cafe', component: CafeComponent },
-  { path:'helpdesk', component: HelpdeskComponent },
-  { path:'login', component: LoginSignupComponent}
+const routes: Routes = [ 
+  { path:"loginRegistration", loadChildren: () => import(`./login-registration/login-registration.module`).then(m => m.LoginRegistrationModule) },
+  { path:"", loadChildren: () => import('./cafe-main/cafe-main.module').then(m => m.CafeMainModule) },
+  { path:"helpdesk", loadChildren: () => import("./helpdesk/helpdesk.module").then(m => m.HelpdeskModule) }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(
+      routes,
+      { onSameUrlNavigation: 'reload'}
+    )
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+
+
+
