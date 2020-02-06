@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
 
   // Html DOM manipulation variables
   userRoleType : string = 'admin'; // used in role mapping for admin and customer
-  userLoggedIn : boolean = false; // used to set login and logout status and change menus
+  userLoggedIn : boolean = true; // used to set login and logout status and change menus
 
 
 }
