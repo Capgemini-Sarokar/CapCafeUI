@@ -14,6 +14,7 @@ export class LoginService {
     this.http.get (loginUrl).subscribe (
       data => {
         console.log("Received Data: ", data);
+        return data;
       }, error => {
         console.log("Received Error: ", error);
       }

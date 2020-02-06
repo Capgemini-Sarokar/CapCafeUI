@@ -1,0 +1,27 @@
+<mat-toolbar color="secondary">
+    <mat-toolbar-row>
+        <span [matMenuTriggerFor]="mmenu">Menu Options</span>
+        <button mat-icon-button [matMenuTriggerFor]="mmenu" *ngIf="userLoggedIn === true">
+            <mat-icon>drag_indicator</mat-icon>
+        </button>
+        <mat-menu #mmenu="matMenu">
+            <button mat-menu-item routerLink="viewMenu">
+                <mat-icon>power_settings_new</mat-icon>
+                <span>View Menus</span>
+            </button>
+            <button mat-menu-item routerLink="addMenu">
+                <mat-icon>power_settings_new</mat-icon>
+                <span>Add Menu</span>
+            </button>
+            <button mat-menu-item routerLink="updateMenu">
+                <mat-icon>power_settings_new</mat-icon>
+                <span>Update Menu</span>
+            </button>
+            <button mat-menu-item routerLink="removeMenu">
+                <mat-icon>power_settings_new</mat-icon>
+                <span>Remove Menu</span>
+            </button>
+        </mat-menu>
+    </mat-toolbar-row>
+</mat-toolbar>
+<router-outlet></router-outlet>
