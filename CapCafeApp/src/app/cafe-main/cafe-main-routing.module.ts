@@ -10,7 +10,7 @@ import { RemoveCafeComponent } from './remove-cafe/remove-cafe.component';
 const routes: Routes = [
   { path:"", component: CafeMainComponent, 
     children: [
-      { path: "", component: CafeViewComponent },
+      { path: "viewCafe", component: CafeViewComponent },
       { path: "addCafe", component: AddCafeComponent },
       { path: "updateCafe", component: UpdateCafeComponent },
       { path: "removeCafe", component: RemoveCafeComponent }

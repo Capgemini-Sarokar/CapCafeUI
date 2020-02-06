@@ -1,6 +1,24 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-        <span routerLink="/">Capgemini Cafe</span>
+        <span [matMenuTriggerFor]="cmenu">Capgemini Cafe</span>
+        <mat-menu #cmenu="matMenu">
+            <button mat-menu-item routerLink="/viewCafe">
+                <mat-icon>power_settings_new</mat-icon>
+                <span>View Cafe</span>
+            </button>
+            <button mat-menu-item routerLink="/addCafe" *ngIf="userRoleType === 'admin'">
+                <mat-icon>power_settings_new</mat-icon>
+                <span>Add Cafe</span>
+            </button>
+            <button mat-menu-item routerLink="/updateCafe" *ngIf="userRoleType === 'admin'">
+                <mat-icon>power_settings_new</mat-icon>
+                <span>Update Cafe</span>
+            </button>
+            <button mat-menu-item routerLink="/removeCafe" *ngIf="userRoleType === 'admin'">
+                <mat-icon>power_settings_new</mat-icon>
+                <span>Remove Cafe</span>
+            </button>
+        </mat-menu>
         <span class="fill-remaining-space"></span>
         <button mat-button routerLink="/helpdesk">Help Desk</button>
         <button mat-button>About</button>
