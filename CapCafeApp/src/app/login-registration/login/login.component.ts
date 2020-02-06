@@ -17,7 +17,7 @@ export class LoginComponent {
   submit() {
     if (this.form.valid) {
       this.submitEM.emit(this.form.value);
-      let responseFromServer = this.loginService.submitLoginForm (this.form.value);
+      let responseFromServer = this.loginService.submitLoginForm (this.form.value); // this will be json object with user details
     }
   }
 
