@@ -22,6 +22,7 @@ export class RegistrationComponent {
   submit() {
     if (this.form.valid) {
       this.submitEM.emit(this.form.value);
+      let responseFromServer = this.registrationService.submitRegistrationForm (this.form.value);
     }
   }
 

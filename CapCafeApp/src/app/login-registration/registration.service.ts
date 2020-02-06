@@ -1,9 +1,22 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegistrationService {
+  constructor (private http : HttpClient) {
 
-  constructor() { }
+  }
+
+  submitRegistrationForm (form : any) {
+    let registrationUrl : string = "http:/localhost:4200/"; 
+    this.http.post (registrationUrl, form).subscribe (
+      data => {
+        console.log("Received Data: ", data);
+      }, error => {
+        console.log("Received Error: ", error);
+      }
+    )
+  }
 }
