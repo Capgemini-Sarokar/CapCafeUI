@@ -10,7 +10,7 @@ export class RegistrationService {
   }
 
   submitRegistrationForm (form : any) {
-    let registrationUrl : string = "http:/localhost:4200/"; 
+    let registrationUrl : string = "http://localhost:9091/capcafe/add"; 
     this.http.post (registrationUrl, form).subscribe (
       data => {
         console.log("Received Data: ", data);

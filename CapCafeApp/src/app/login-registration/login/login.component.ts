@@ -10,13 +10,14 @@ import { LoginService } from '.././login.service';
 })
 export class LoginComponent {
   form: FormGroup = new FormGroup({
-    username: new FormControl(''),
+    employeeId: new FormControl(''),
     password: new FormControl(''),
   });
 
   submit() {
     if (this.form.valid) {
       this.submitEM.emit(this.form.value);
+      let responseFromServer = this.loginService.submitLoginForm (this.form.value);
     }
   }
 
