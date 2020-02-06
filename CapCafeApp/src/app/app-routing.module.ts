@@ -9,6 +9,8 @@ import { AddMenuComponent } from './add-menu/add-menu.component';
 import { ViewMenuComponent } from './view-menu/view-menu.component';
 import { RemoveMenuComponent } from './remove-menu/remove-menu.component';
 import { UpdateMenuComponent } from './update-menu/update-menu.component';
+import { ViewHelpdeskComponent } from './view-helpdesk/view-helpdesk.component';
+
 
 const routes: Routes = [
   { path:'add-cafe', component: AddCafeComponent },
@@ -19,7 +21,9 @@ const routes: Routes = [
   { path: 'add-menu', component: AddMenuComponent },
   { path: 'remove-menu', component: RemoveMenuComponent },
   { path: 'update-menu', component: UpdateMenuComponent},
-  { path: 'view-menu', component: ViewMenuComponent}
+  { path: 'view-menu', component: ViewMenuComponent},
+  { path: 'view-helpdesk', component: ViewHelpdeskComponent}
+
 ];
 
 @NgModule({

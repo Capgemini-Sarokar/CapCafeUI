@@ -15,6 +15,7 @@ import { AddMenuComponent } from './add-menu/add-menu.component';
 import { RemoveMenuComponent } from './remove-menu/remove-menu.component';
 import { UpdateMenuComponent } from './update-menu/update-menu.component';
 import { ViewMenuComponent } from './view-menu/view-menu.component';
+import { ViewHelpdeskComponent } from './view-helpdesk/view-helpdesk.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ViewMenuComponent } from './view-menu/view-menu.component';
     AddMenuComponent,
     RemoveMenuComponent,
     UpdateMenuComponent,
-    ViewMenuComponent
+    ViewMenuComponent,
+    ViewHelpdeskComponent
   ],
   imports: [
     BrowserModule,
