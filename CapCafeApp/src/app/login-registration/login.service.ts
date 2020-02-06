@@ -9,15 +9,20 @@ export class LoginService {
 
   }
 
-  submitLoginForm (form : any) {
-    let loginUrl : string = "http://localhost:9091/capcafe/login/" + form.employeeId + "/" + form.password; 
-    this.http.get (loginUrl).subscribe (
-      data => {
-        console.log("Received Data: ", data);
-        return data;
-      }, error => {
-        console.log("Received Error: ", error);
-      }
-    )
+  submitLoginForm(form : any) : Promise<any> {
+    let promise = new Promise((resolve, reject) => {
+      let loginUrl : string = "http://localhost:9091/capcafe/login/" + form.employeeId + "/" + form.password;
+      this.http.get(loginUrl).toPromise().then(
+        res => { // Success
+          console.log(res);
+          resolve();
+        },
+        err => {
+          console.log(err);
+          reject();
+        }
+      );
+    });
+    return promise;
   }
 }
