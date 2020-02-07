@@ -34,7 +34,7 @@
                 <mat-icon>power_settings_new</mat-icon>
                 <span>Login</span>
             </button>
-            <button mat-menu-item routerLink="/loginRegistration" *ngIf="userLoggedIn">
+            <button mat-menu-item onclick="logOut()" *ngIf="userLoggedIn">
                 <mat-icon>power_settings_new</mat-icon>
                 <span>Logout</span>
             </button>
