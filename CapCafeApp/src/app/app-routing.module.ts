@@ -6,6 +6,7 @@ const routes: Routes = [
   { path:"", loadChildren: () => import('./cafe-main/cafe-main.module').then(m => m.CafeMainModule) },
   { path:"helpdesk", loadChildren: () => import("./helpdesk/helpdesk.module").then(m => m.HelpdeskModule) },
   { path:"menuorder", loadChildren: () => import("./menu-order/menu-order.module").then(m => m.MenuOrderModule) }
+
 ];
 
 @NgModule({
