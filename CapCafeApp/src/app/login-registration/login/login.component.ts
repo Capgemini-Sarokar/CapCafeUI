@@ -15,7 +15,7 @@ export class LoginComponent {
     password: new FormControl(''),
   });
 
-  submit() {
+  async submit() {
     if (this.form.valid) {
       this.submitEM.emit(this.form.value);
       let responseFromServer : any = await this.loginService.submitLoginForm(this.form.value); // this will be json object with user details

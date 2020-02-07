@@ -9,6 +9,7 @@ import { RemoveMenuComponent } from './remove-menu/remove-menu.component';
 
 import { MenuOrderRoutingModule } from './menu-order-routing.module';
 import { MenuOrderComponent } from './menu-order.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { MenuOrderComponent } from './menu-order.component';
     MenuOrderComponent
   ],
   imports: [
+    FormsModule,
     CommonModule,
     CustomMaterialModule,
     MenuOrderRoutingModule
