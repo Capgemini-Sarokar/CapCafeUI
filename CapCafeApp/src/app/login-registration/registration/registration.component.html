@@ -43,8 +43,8 @@
                     </mat-select>
                   </mat-form-field>
             </p>
-            <p *ngIf="error" class="error">
-                {{ error }}
+            <p *ngIf="formError" class="error">
+                {{ formErrorString }}
             </p>
             <div class="button">
                 <button type="submit" mat-button>Sign Up!</button>

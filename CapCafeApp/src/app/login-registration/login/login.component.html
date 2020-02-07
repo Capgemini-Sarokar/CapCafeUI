@@ -12,8 +12,8 @@
                     <input type="password" matInput placeholder="Password" formControlName="password" required>
                 </mat-form-field>
             </p>
-            <p *ngIf="error" class="error">
-                {{ error }}
+            <p *ngIf="formError" class="error">
+                {{ formErrorString }}
             </p>
             <p>
                 Not Registered? <a routerLink="registration"> Sign Up </a> here!
