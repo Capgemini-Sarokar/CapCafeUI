@@ -24,7 +24,6 @@ export class LoginComponent {
 
   async submit() {
     if (this.form.valid) {
-      this.submitEM.emit(this.form.value);
       let responseFromServer : any = await this.loginService.submitLoginForm(this.form.value); // this will be json object with user details
       if (responseFromServer === null) {
         console.log("Error");
@@ -42,10 +41,7 @@ export class LoginComponent {
 
   @Input() error: string | null;
 
-  @Output() submitEM = new EventEmitter();
-
   constructor(private loginService: LoginService, private route : Router) {
 
   }
-
 }

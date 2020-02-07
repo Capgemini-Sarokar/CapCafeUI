@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from './login-registration/login.service';
 import { User } from './models/user';
-import { DoCheck, KeyValueDiffers, KeyValueDiffer } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +8,7 @@ import { DoCheck, KeyValueDiffers, KeyValueDiffer } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  private user : User;
+  private user : User = null;
 
   ngOnInit(): void {
     if (this.user === null) {
@@ -27,19 +26,8 @@ export class AppComponent implements OnInit {
   userRoleType : string = 'admin'; // used in role mapping for admin and customer
   userLoggedIn : boolean = false; // used to set login and logout status and change menus
 
-  constructor (private loginService : LoginService, private differs: KeyValueDiffers) {
-    this.differ = this.differs.find({}).create();
-  }
+  constructor (private loginService : LoginService) {
 
-  differ: KeyValueDiffer<string, any>;
-
-  ngDoCheck() {
-    const change = this.differ.diff(this);
-    if (change) {
-      change.forEachChangedItem(item => {
-        console.log('item changed', item);
-      });
-    }
   }
 
   logOut() {

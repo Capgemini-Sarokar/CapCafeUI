@@ -6,7 +6,7 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class LoginService {
-  public user : User;
+  public user : User = null;
 
   constructor (private http : HttpClient) {
 
