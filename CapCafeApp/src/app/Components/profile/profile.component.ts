@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { User } from '../models/user';
+import { User } from '../../models/user.model';
 import { FormGroup, FormControl } from '@angular/forms';
+import { CafeUserService } from 'src/app/Services/cafe-user.service';
 
 @Component({
   selector: 'app-profile',
@@ -48,7 +49,7 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  constructor() {
+  constructor(private userService: CafeUserService) {
 
   }
 }

@@ -5,6 +5,7 @@ export class User {
     public name : string;
     public phoneNumber : string;
     public dateOfBirth : string;
+    public userRole : string;
 
     constructor () {
         this.employeeId = "";
@@ -13,5 +14,6 @@ export class User {
         this.name = "";
         this.phoneNumber = "";
         this.dateOfBirth = "";
+        this.userRole = "";
     }
 }

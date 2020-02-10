@@ -2,14 +2,15 @@
     display: flex;
     justify-content: center;
     margin: 100px 0px;
-  }
+}
 
 .mat-form-field {
     width: 100%;
     min-width: 300px;
 }
 
-mat-card-title, mat-card-content {
+mat-card-title,
+mat-card-content {
     display: flex;
     justify-content: center;
 }
@@ -24,4 +25,10 @@ mat-card-title, mat-card-content {
 .button {
     display: flex;
     justify-content: flex-end;
+}
+
+.fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
 }

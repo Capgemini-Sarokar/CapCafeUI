@@ -2,23 +2,15 @@
     display: flex;
     justify-content: center;
     margin: 100px 0px;
-  }
-
-.example-card {
-    max-width: 400px;
-  }
-  
-  .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
-  }
+}
 
 .mat-form-field {
     width: 100%;
     min-width: 300px;
 }
 
-mat-card-title, mat-card-content {
+mat-card-title,
+mat-card-content {
     display: flex;
     justify-content: center;
 }

@@ -38,15 +38,17 @@
                 <mat-form-field>
                     <mat-label>User Role</mat-label>
                     <mat-select placeholder="User Role" formControlName="userRole">
-                      <mat-option value="admin">Admin</mat-option>
-                      <mat-option value="customer">General User</mat-option>
+                        <mat-option value="admin">Admin</mat-option>
+                        <mat-option value="customer">General User</mat-option>
                     </mat-select>
-                  </mat-form-field>
+                </mat-form-field>
             </p>
             <p *ngIf="formError" class="error">
                 {{ formErrorString }}
             </p>
             <div class="button">
+                <button type="submit" mat-button routerLink="../login">Back to Login</button>
+                <span class="fill-remaining-space"></span>
                 <button type="submit" mat-button>Sign Up!</button>
             </div>
         </form>

@@ -1,37 +1,41 @@
-import { CommonModule } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { NgModule } from '@angular/core';
-import { CustomMaterialModule } from './material.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+import { CustomMaterialModule } from './material.module';
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
+import { NavbarComponent } from './Components/navbar/navbar.component';
+import { LoginComponent } from './Components/login/login.component';
+import { RegistrationComponent } from './Components/registration/registration.component';
+import { ProfileComponent } from './Components/profile/profile.component';
+import { CafeUserService } from './Services/cafe-user.service';
 
-import { AppRoutingModule } from './app-routing.module';
-import { LoginService } from './login-registration/login.service';
-import { HttpClientModule } from '@angular/common/http';
-import { ProfileComponent } from './profile/profile.component';
-import { ViewTicketsComponent } from './view-tickets/view-tickets.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProfileComponent,
-    ViewTicketsComponent
+    NavbarComponent,
+    LoginComponent,
+    RegistrationComponent,
+    ProfileComponent
   ],
   imports: [
-    HttpClientModule,
-    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     CustomMaterialModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [
-    LoginService
+    CafeUserService
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }
