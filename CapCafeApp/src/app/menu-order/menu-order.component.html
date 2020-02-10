@@ -1,0 +1,26 @@
+<mat-toolbar color="secondary">
+    <mat-toolbar-row>
+        <span [matMenuTriggerFor]="mmenu">Menu Options</span>
+        <!-- <button mat-icon-button [matMenuTriggerFor]="mmenu" *ngIf="userLoggedIn === true">
+            <mat-icon>drag_indicator</mat-icon>
+        </button> -->
+        <div class="h-100 w-100 blur">
+            <div class="d-flex align-items-center justify-content-center h-100">
+                <div class="d-flex flex-column align-items-center ">
+                    <div class="bg">
+                    </div>
+                    <div class="container-fluid">
+                        <div class="col-md-offset-1">
+                            <h1>Menu</h1>
+
+                        </div>
+                        <a routerLink="menus"> List of foods</a>
+                        <a style="margin-left:10px" routerLink="add">Add food item</a>
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+<router-outlet></router-outlet>

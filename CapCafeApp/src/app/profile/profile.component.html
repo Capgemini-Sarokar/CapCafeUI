@@ -1,0 +1,48 @@
+<mat-card>
+    <mat-card-title>My Profile</mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="submit()">
+            <p>
+                <mat-form-field>
+                    <input type="text" matInput formControlName="employeeId">
+                    <mat-hint>Employee ID</mat-hint>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <input type="email" matInput formControlName="emailId" pattern="[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}">
+                    <mat-hint>Email Id</mat-hint>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <input type="text" matInput formControlName="name" pattern="[A-Za-z\s]*">
+                    <mat-hint>Name</mat-hint>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <input type="text" matInput formControlName="phoneNumber" maxlength="10" pattern="[0-9]*">
+                    <mat-hint>Phone Number</mat-hint>
+                </mat-form-field>
+            </p>
+            <p>
+                <mat-form-field>
+                    <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" placeholder="{{user.dateOfBirth}}">
+                    <mat-hint>Date Of Birth</mat-hint>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker startView="year" [startAt]="1940"></mat-datepicker>
+                </mat-form-field>
+            </p>
+            <p *ngIf="formError" class="error">
+                {{ formErrorString }}
+            </p>
+            <div class="button">
+                <button mat-button (click)="enableEditMode()" *ngIf="!editMode">Edit Details</button>
+            </div>
+            <div class="button">
+                <button mat-button (click)="saveUpdates()" *ngIf="editMode">Submit Updates</button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>
