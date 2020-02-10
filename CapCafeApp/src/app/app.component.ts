@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from './login-registration/login.service';
 import { User } from './models/user';
-import { LoginComponent } from './login-registration/login/login.component';
 import { UserDataServiceService } from './user-data-service.service';
 import { Router } from '@angular/router';
 
@@ -13,13 +11,11 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   private user : User = null;
 
-  ngOnChanges () {
-
-  }
-
   subscription: any;
   ngOnInit(): void {
     this.userLoggedIn = false;
+    // this.user = new User ();
+    // this.user.name = "Dummy";
     this.subscription = this.userDataService.userData$.subscribe(
       item => {
         if (this.user === null) {
