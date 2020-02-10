@@ -12,11 +12,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoginService } from './login-registration/login.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ProfileComponent } from './profile/profile.component';
+import { ViewTicketsComponent } from './view-tickets/view-tickets.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProfileComponent
+    ProfileComponent,
+    ViewTicketsComponent
   ],
   imports: [
     HttpClientModule,

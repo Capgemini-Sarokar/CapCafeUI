@@ -24,7 +24,15 @@
         </mat-menu>
         <button mat-button routerLink="menuorder">Menu</button>
         <span class="fill-remaining-space"></span>
-        <button mat-button routerLink="/helpdesk">Help Desk</button>
+        <button mat-button [matMenuTriggerFor]="hmenu" routerLink="/helpdesk">
+            Help Desk
+        </button>
+        <mat-menu #hmenu="matMenu">
+            <button mat-menu-item routerLink="/tickets">
+                <mat-icon>power_settings_new</mat-icon>
+                <span>View Tickets</span>
+            </button>
+        </mat-menu>
         <button mat-icon-button *ngIf="userLoggedIn" [matMenuTriggerFor]="profileMenu">
             <span>{{user.name}}</span>
         </button>

@@ -1,27 +1,26 @@
 <mat-toolbar color="secondary">
     <mat-toolbar-row>
         <span [matMenuTriggerFor]="mmenu">Menu Options</span>
-        <button mat-icon-button [matMenuTriggerFor]="mmenu" *ngIf="userLoggedIn === true">
+        <!-- <button mat-icon-button [matMenuTriggerFor]="mmenu" *ngIf="userLoggedIn === true">
             <mat-icon>drag_indicator</mat-icon>
-        </button>
-        <mat-menu #mmenu="matMenu">
-            <button mat-menu-item routerLink="viewMenu">
-                <mat-icon>power_settings_new</mat-icon>
-                <span>View Menus</span>
-            </button>
-            <button mat-menu-item routerLink="addMenu">
-                <mat-icon>power_settings_new</mat-icon>
-                <span>Add Menu</span>
-            </button>
-            <button mat-menu-item routerLink="updateMenu">
-                <mat-icon>power_settings_new</mat-icon>
-                <span>Update Menu</span>
-            </button>
-            <button mat-menu-item routerLink="removeMenu">
-                <mat-icon>power_settings_new</mat-icon>
-                <span>Remove Menu</span>
-            </button>
-        </mat-menu>
+        </button> -->
+        <div class="h-100 w-100 blur">
+            <div class="d-flex align-items-center justify-content-center h-100">
+                <div class="d-flex flex-column align-items-center ">
+                    <div class="bg">
+                    </div>
+                    <div class="container-fluid">
+                        <div class="col-md-offset-1">
+                            <h1>Menu</h1>
+
+                        </div>
+                        <a routerLink="menus"> List of foods</a>
+                        <a style="margin-left:10px" routerLink="add">Add food item</a>
+                        <br />
+                    </div>
+                </div>
+            </div>
+        </div>
     </mat-toolbar-row>
 </mat-toolbar>
 <router-outlet></router-outlet>
