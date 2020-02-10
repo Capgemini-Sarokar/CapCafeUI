@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HelpdeskFormComponent } from './helpdesk-form/helpdesk-form.component';
 
 const routes: Routes = [
-  { path: '', component: HelpdeskFormComponent},
+  { path: '', component: HelpdeskFormComponent },
 ]
 
 @NgModule({

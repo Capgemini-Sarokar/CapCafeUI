@@ -4,7 +4,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ViewTicketsComponent } from './view-tickets/view-tickets.component';
 
 const routes: Routes = [ 
-  { path:"tickets", component: ViewTicketsComponent},
+  { path:"tickets", component: ViewTicketsComponent },
   { path:"profile", component: ProfileComponent },
   { path:"loginRegistration", loadChildren: () => import(`./login-registration/login-registration.module`).then(m => m.LoginRegistrationModule) },
   { path:"", loadChildren: () => import('./cafe-main/cafe-main.module').then(m => m.CafeMainModule) },

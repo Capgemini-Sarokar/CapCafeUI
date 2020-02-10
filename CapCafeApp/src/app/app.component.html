@@ -24,7 +24,7 @@
         </mat-menu>
         <button mat-button routerLink="menuorder">Menu</button>
         <span class="fill-remaining-space"></span>
-        <button mat-button [matMenuTriggerFor]="hmenu" routerLink="/helpdesk">
+        <button mat-button [matMenuTriggerFor]="hmenu" routerLink="/helpdesk" *ngIf="userLoggedIn">
             Help Desk
         </button>
         <mat-menu #hmenu="matMenu">
