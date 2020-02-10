@@ -1,0 +1,26 @@
+<div class="col-md-6">
+    <h2> Menu Details</h2>
+    
+    <table class="table table-striped table-hover table-bordered" id="showcase-fixedcolumns" datatable=""
+    cellspacing="10" cellpadding="10" border="1" width=1200 align="center">
+    <thead class="thead-dark">
+      <tr align="center">
+        <th>Food Id</th>
+        <th>Cafe Id</th>
+        <th>Food Name</th>
+        <th>Food Price</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+      <tbody>
+      <tr *ngFor="let menu of menus">
+       
+        <td>{{menu.foodId}}</td>
+        <td>{{menu.cafeId}}</td>
+        <td>{{menu.foodName}}</td>
+        <td>{{menu.foodPrice}}</td>
+        <td><button class="btn btn-danger" (click)="deleteMenu(menu)"> Delete User</button></td>
+      </tr>
+      </tbody>
+    </table>
+    </div>
