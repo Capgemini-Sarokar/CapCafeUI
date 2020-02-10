@@ -13,6 +13,8 @@ import { LoginComponent } from './Components/login/login.component';
 import { RegistrationComponent } from './Components/registration/registration.component';
 import { ProfileComponent } from './Components/profile/profile.component';
 import { CafeUserService } from './Services/cafe-user.service';
+import { CafeMainComponent } from './Components/cafe-main/cafe-main.component';
+import { CafeCafeService } from './Services/cafe-cafe.service';
 
 
 @NgModule({
@@ -21,7 +23,8 @@ import { CafeUserService } from './Services/cafe-user.service';
     NavbarComponent,
     LoginComponent,
     RegistrationComponent,
-    ProfileComponent
+    ProfileComponent,
+    CafeMainComponent
   ],
   imports: [
     FormsModule,
@@ -32,7 +35,8 @@ import { CafeUserService } from './Services/cafe-user.service';
     AppRoutingModule
   ],
   providers: [
-    CafeUserService
+    CafeUserService,
+    CafeCafeService
   ],
   bootstrap: [
     AppComponent

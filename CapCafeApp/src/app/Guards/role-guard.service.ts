@@ -8,7 +8,7 @@ import { CafeUserService } from '../Services/cafe-user.service';
 export class RoleGuardService implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if (this.userService.role() == "admin" || this.userService.role() == "user") {
+    if (this.userService.role() == "admin" || this.userService.role() == "customer") {
       return true;
     }
 

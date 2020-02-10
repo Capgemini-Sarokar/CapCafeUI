@@ -1,0 +1,82 @@
+<div class="container" style="padding: 5%">
+
+    <mat-accordion *ngIf="userRole === 'admin'">
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" *ngIf="userRole === 'admin'" [disabled]="isDisabled">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Add Cafe
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-panel-description style="justify-content: center;">
+                <mat-card>
+                    <mat-card-content>
+                        <form [formGroup]="form" (ngSubmit)="addCafe()">
+                            <p>
+                                <mat-form-field>
+                                    <input type="text" matInput placeholder="Cafe Id" formControlName="cafeId" required>
+                                </mat-form-field>
+                            </p>
+                            <p>
+                                <mat-form-field>
+                                    <input type="text" matInput placeholder="Cafe Name" formControlName="cafeName" required>
+                                </mat-form-field>
+                            </p>
+                            <p>
+                                <mat-form-field>
+                                    <input type="text" matInput placeholder="Cafe Owner" formControlName="cafeOwner" required>
+                                </mat-form-field>
+                            </p>
+                            <p>
+                                <mat-form-field>
+                                    <input type="text" matInput placeholder="Cafe Location" formControlName="location" required>
+                                </mat-form-field>
+                            </p>
+                            <div class="button">
+                                <button type="submit" mat-button>Add Cafe</button>
+                            </div>
+                        </form>
+                    </mat-card-content>
+                </mat-card>
+            </mat-panel-description>
+            <!-- <mat-action-row>
+                <button mat-button (click)="addCafe(cafe.cafeId)">Add Cafe</button>
+            </mat-action-row> -->
+        </mat-expansion-panel>
+    </mat-accordion>
+    <br>
+    <div *ngFor="let cafe of cafes" style="padding-bottom: 2%;">
+        <mat-card>
+            <mat-card-header>
+                <mat-card-title>{{cafe.cafeName}}</mat-card-title>
+                <mat-card-subtitle>{{cafe.cafeOwner}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="../../../assets/a.jpg" alt="Some Photo">
+            <mat-card-content>
+                <p>Location : {{cafe.location}}</p>
+            </mat-card-content>
+            <mat-accordion>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Reviews & Ratings
+                        </mat-panel-title>
+                        <mat-panel-description>
+
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                </mat-expansion-panel>
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" *ngIf="userRole === 'admin'" [disabled]="isDisabled">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Manage Cafe
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <mat-action-row>
+                        <button mat-button (click)="removeCafe(cafe.cafeId)">Remove Cafe</button>
+                    </mat-action-row>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </mat-card>
+        <br>
+    </div>
+</div>

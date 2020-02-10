@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { throwError, Observable } from 'rxjs';
+import {  Observable } from 'rxjs';
 import { User } from '../models/user.model';
 import { HttpClient } from '@angular/common/http';
 
@@ -12,18 +12,6 @@ export class CafeUserService {
 
   constructor(private http: HttpClient) { 
 
-  }
-
-  errorHandler(error) {
-    let errorMessage = '';
-    if (error.error instanceof ErrorEvent) { //client side error
-      errorMessage = `Error: ${error.error.message}`;
-    }
-    else { //server side error
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.error}`;
-    }
-    window.alert(errorMessage);
-    return throwError(error.error)
   }
 
   role () : string{
