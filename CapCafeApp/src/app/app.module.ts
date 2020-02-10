@@ -11,10 +11,12 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginService } from './login-registration/login.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    ProfileComponent
   ],
   imports: [
     HttpClientModule,

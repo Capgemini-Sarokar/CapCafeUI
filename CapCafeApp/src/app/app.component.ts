@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from './login-registration/login.service';
 import { User } from './models/user';
+import { LoginComponent } from './login-registration/login/login.component';
+import { UserDataServiceService } from './user-data-service.service';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +12,21 @@ import { User } from './models/user';
 export class AppComponent implements OnInit {
   private user : User = null;
 
+  ngOnChanges () {
+
+  }
+
+  subscription: any;
   ngOnInit(): void {
-    if (this.user === null) {
-      this.userLoggedIn = false;
-    } else {
-      this.userLoggedIn = true;
-      this.user = this.loginService.user;
-    }
+    this.userLoggedIn = false;
+    this.subscription = this.userDataService.userData$.subscribe(
+      item => {
+        if (this.user === null) {
+          this.user = item;
+          this.userLoggedIn = true;
+        }
+      }
+    );
   }
 
   title : string = 'CapCafeApp';
@@ -26,12 +36,16 @@ export class AppComponent implements OnInit {
   userRoleType : string = 'admin'; // used in role mapping for admin and customer
   userLoggedIn : boolean = false; // used to set login and logout status and change menus
 
-  constructor (private loginService : LoginService) {
+  constructor (private userDataService : UserDataServiceService) {
 
   }
 
   logOut() {
     this.userLoggedIn = false;
     this.user = null; 
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

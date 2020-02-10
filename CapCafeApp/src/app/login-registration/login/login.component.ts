@@ -5,6 +5,7 @@ import { LoginService } from '.././login.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/user';
+import { UserDataServiceService } from 'src/app/user-data-service.service';
 
 @Component({
   selector: 'app-login',
@@ -32,6 +33,9 @@ export class LoginComponent {
       } else {
         this.user = responseFromServer;
         console.log("Success");
+        // send user data to app component
+        this.userDataService.putUser(this.user);
+        //
         this.formError = false;
         this.formErrorString = "";
         this.route.navigate(['']);
@@ -41,7 +45,8 @@ export class LoginComponent {
 
   @Input() error: string | null;
 
-  constructor(private loginService: LoginService, private route : Router) {
+  constructor(private loginService: LoginService, private userDataService : UserDataServiceService, private route : Router) {
 
   }
+
 }
