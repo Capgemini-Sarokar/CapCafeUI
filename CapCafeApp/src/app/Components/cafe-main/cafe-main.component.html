@@ -44,18 +44,18 @@
         </mat-expansion-panel>
     </mat-accordion>
     <br>
-    <div *ngFor="let cafe of cafes" style="padding-bottom: 2%;">
+    <div *ngFor="let cafe of cafes; let i = index" style="padding-bottom: 2%;">
         <mat-card>
             <mat-card-header>
                 <mat-card-title>{{cafe.cafeName}}</mat-card-title>
                 <mat-card-subtitle>{{cafe.cafeOwner}}</mat-card-subtitle>
             </mat-card-header>
-            <img mat-card-image src="../../../assets/a.jpg" alt="Some Photo">
+            <img mat-card-image src="{{imgUrls[i]}}" alt="Some Photo">
             <mat-card-content>
                 <p>Location : {{cafe.location}}</p>
             </mat-card-content>
             <mat-accordion>
-                <mat-expansion-panel>
+                <mat-expansion-panel [disabled]="true">
                     <mat-expansion-panel-header>
                         <mat-panel-title>
                             Reviews & Ratings
@@ -65,7 +65,7 @@
                         </mat-panel-description>
                     </mat-expansion-panel-header>
                 </mat-expansion-panel>
-                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" *ngIf="userRole === 'admin'" [disabled]="isDisabled">
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" *ngIf="userRole === 'admin'">
                     <mat-expansion-panel-header>
                         <mat-panel-title>
                             Manage Cafe

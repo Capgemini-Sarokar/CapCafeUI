@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, DoCheck } from '@angular/core';
 import { CafeCafeService } from 'src/app/Services/cafe-cafe.service';
-import { Cafe } from 'src/app/models/cafe.model';
 import { CafeUserService } from 'src/app/Services/cafe-user.service';
 import { FormGroup, FormControl } from '@angular/forms';
 
@@ -15,6 +14,8 @@ export class CafeMainComponent implements OnInit, DoCheck {
   private userRole: string = "customer";
 
   private cafes = [];
+  private imgUrls = ["../../../assets/a.jpg", "../../../assets/b.jpg", 
+    "../../../assets/c.jpg", "../../../assets/a.jpg", "../../../assets/b.jpg", "../../../assets/c.jpg"];
 
   public form: FormGroup = new FormGroup({
     cafeId: new FormControl(''),
