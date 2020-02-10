@@ -15,12 +15,13 @@
             <p *ngIf="formError" class="error">
                 {{ formErrorString }}
             </p>
-            <p>
+            <p *ngIf="!formSubmitted">
                 Not Registered? <a routerLink="../registration"> Sign Up </a> here!
             </p>
-            <div class="button">
+            <div class="button" *ngIf="!formSubmitted">
                 <button type="submit" mat-button>Login</button>
             </div>
+            <mat-spinner *ngIf="formSubmitted" style="justify-content: center;"></mat-spinner>
         </form>
     </mat-card-content>
 </mat-card>

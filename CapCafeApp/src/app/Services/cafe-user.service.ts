@@ -27,27 +27,38 @@ export class CafeUserService {
   }
 
   role () : string{
-    return sessionStorage.getItem('role');
+    return this.loggedInUser !== null ? this.loggedInUser.userRole : '';
   }
 
   saveUser (user: User) : void {
     console.log(user);
     this.loggedInUser = user;
+    sessionStorage.setItem("currentUser", JSON.stringify(this.loggedInUser));
     console.log(this.loggedInUser);
   }
 
   signUp (signUpForm: any) : Observable<User>{
-    let registrationUrl = "http://localhost:9091/capcafe/add"
+    let registrationUrl = "http://localhost:9091/capcafe/add";
     return this.http.post<User>(registrationUrl, signUpForm);
   }
 
   login (empId: string, password: string): Observable<User> {
-    let loginUrl = "http://localhost:9091/capcafe/login/" + empId + "/" + password
+    let loginUrl = "http://localhost:9091/capcafe/login/" + empId + "/" + password;
     return this.http.get<User>(loginUrl);
   }
 
   profile () : User {
-    console.log(this.loggedInUser);
+    //console.log(this.loggedInUser);
     return this.loggedInUser;
+  }
+
+  clearUser () : void {
+    this.loggedInUser = null;
+    sessionStorage.clear();
+  }
+
+  updateUserDetails (form : any) : Observable<User> {
+    let updateUrl = "http://localhost:9091/capcafe/update";
+    return this.http.post<User>(updateUrl, form);
   }
 }
