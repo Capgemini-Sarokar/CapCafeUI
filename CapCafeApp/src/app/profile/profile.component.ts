@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../models/user';
-import { UserDataServiceService } from '../user-data-service.service';
 
 @Component({
   selector: 'app-profile',
@@ -8,20 +7,18 @@ import { UserDataServiceService } from '../user-data-service.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-    private user : User = null;
+    @Input()
+    private user : User = new User ();
 
-    subscription: any;
     ngOnInit(): void {
-      this.subscription = this.userDataService.userData$.subscribe(
-        item => {
-          if (this.user === null) {
-            this.user = item;
-          }
-        }
-      );
+      this.user.employeeId = "dummy Id";
+      this.user.name = "dummy name";
+      this.user.emailId = "dummy@email.com";
+      this.user.phoneNumber = "1234567890";
+      this.user.dateOfBirth = "dd/mm/yyyy";
     }
 
-    constructor (private userDataService: UserDataServiceService) {
+    constructor () {
         
     }
 }

@@ -3,6 +3,7 @@ import { LoginService } from './login-registration/login.service';
 import { User } from './models/user';
 import { LoginComponent } from './login-registration/login/login.component';
 import { UserDataServiceService } from './user-data-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -36,13 +37,14 @@ export class AppComponent implements OnInit {
   userRoleType : string = 'admin'; // used in role mapping for admin and customer
   userLoggedIn : boolean = false; // used to set login and logout status and change menus
 
-  constructor (private userDataService : UserDataServiceService) {
+  constructor (private userDataService : UserDataServiceService, private route:Router) {
 
   }
 
   logOut() {
     this.userLoggedIn = false;
     this.user = null; 
+    this.route.navigate(['']);
   }
 
   ngOnDestroy() {
