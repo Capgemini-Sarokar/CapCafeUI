@@ -52,6 +52,7 @@ export class CafeMainComponent implements OnInit, DoCheck {
       this.menus.push(menuForCafe);
     }
     console.log(this.menus);
+    this.cafeDetailsLoadingFailed = this.menuDetailsLoadingFailed = false;
   }
 
   loadCafeDetails() : Promise<any> {
@@ -59,6 +60,7 @@ export class CafeMainComponent implements OnInit, DoCheck {
       this.cafeService.getAllCafeDetails().subscribe(items => {
         // item is an array of objects
         this.cafes = items;
+        this.cafeDetailsLoadingFailed = false;
         resolve(items);
       }, error => {
         console.log(error);
@@ -78,6 +80,7 @@ export class CafeMainComponent implements OnInit, DoCheck {
             reject("Null Object Received");
           } else {
             this.temp = items;
+            this.menuDetailsLoadingFailed = false;
           }
           resolve(items);
         }, error => {
@@ -91,6 +94,7 @@ export class CafeMainComponent implements OnInit, DoCheck {
   }
 
   ngOnInit(): void {
+    this.menuDetailsLoadingFailed = this.cafeDetailsLoadingFailed = true;
     this.menus = [];
     this.cafes = [];
     this.temp = [];
