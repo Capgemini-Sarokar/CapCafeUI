@@ -8,13 +8,13 @@
                         <input type="text" matInput formControlName="orderId" placeholder="Enter complaint Order Id" maxlength="10" class="mat-form-field" required>
                         <mat-hint>Order ID must be within 10 characters</mat-hint>
                     </mat-form-field>
-                </p>
+                </p> 
                 <p>
                     <mat-form-field>
                         <textarea matInput formControlName="comments" rows="5" placeholder="Enter your comments here" class="mat-form-field" required></textarea>
                         <mat-hint>Enter the complaint for the respective order ID. Comment should be within 100 words.</mat-hint>
                     </mat-form-field>
-                </p>
+                </p> 
                 <p *ngIf="formError" class="error">
                     {{ formErrorString }}
                 </p>
