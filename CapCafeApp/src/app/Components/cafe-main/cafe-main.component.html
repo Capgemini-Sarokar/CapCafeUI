@@ -7,44 +7,42 @@
                     Add Cafe
                 </mat-panel-title>
             </mat-expansion-panel-header>
-            <mat-panel-description style="justify-content: center;">
-                <mat-card>
-                    <mat-card-content>
-                        <form [formGroup]="form" (ngSubmit)="addCafe()">
-                            <p>
-                                <mat-form-field>
-                                    <input type="text" matInput placeholder="Cafe Id" formControlName="cafeId" required>
-                                </mat-form-field>
-                            </p>
-                            <p>
-                                <mat-form-field>
-                                    <input type="text" matInput placeholder="Cafe Name" formControlName="cafeName" required>
-                                </mat-form-field>
-                            </p>
-                            <p>
-                                <mat-form-field>
-                                    <input type="text" matInput placeholder="Cafe Owner" formControlName="cafeOwner" required>
-                                </mat-form-field>
-                            </p>
-                            <p>
-                                <mat-form-field>
-                                    <input type="text" matInput placeholder="Cafe Location" formControlName="location" required>
-                                </mat-form-field>
-                            </p>
-                            <div class="button">
-                                <button type="submit" mat-button>Add Cafe</button>
-                            </div>
-                        </form>
-                    </mat-card-content>
-                </mat-card>
-            </mat-panel-description>
+            <mat-card>
+                <mat-card-content>
+                    <form [formGroup]="form" (ngSubmit)="addCafe()">
+                        <p>
+                            <mat-form-field>
+                                <input type="text" matInput placeholder="Cafe Id" formControlName="cafeId" required>
+                            </mat-form-field>
+                        </p>
+                        <p>
+                            <mat-form-field>
+                                <input type="text" matInput placeholder="Cafe Name" formControlName="cafeName" required>
+                            </mat-form-field>
+                        </p>
+                        <p>
+                            <mat-form-field>
+                                <input type="text" matInput placeholder="Cafe Owner" formControlName="cafeOwner" required>
+                            </mat-form-field>
+                        </p>
+                        <p>
+                            <mat-form-field>
+                                <input type="text" matInput placeholder="Cafe Location" formControlName="location" required>
+                            </mat-form-field>
+                        </p>
+                        <div class="button">
+                            <button type="submit" mat-button>Add Cafe</button>
+                        </div>
+                    </form>
+                </mat-card-content>
+            </mat-card>
             <!-- <mat-action-row>
                 <button mat-button (click)="addCafe(cafe.cafeId)">Add Cafe</button>
             </mat-action-row> -->
         </mat-expansion-panel>
     </mat-accordion>
     <br>
-    <div *ngFor="let cafe of cafes; let i = index" style="padding-bottom: 2%;">
+    <div *ngFor="let cafe of cafes; let i = index; let menu of menus" style="padding-bottom: 2%;">
         <mat-card class="cafe-card">
             <mat-card-header>
                 <mat-card-title>{{cafe.cafeName}}</mat-card-title>
@@ -64,6 +62,39 @@
                             Under Construction
                         </mat-panel-description>
                     </mat-expansion-panel-header>
+                    <div class="mat-elevation-z8">
+                        <table mat-table [dataSource]="dataSource">
+
+                            <!-- Position Column -->
+                            <ng-container matColumnDef="position">
+                                <th mat-header-cell *matHeaderCellDef> No. </th>
+                                <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                            </ng-container>
+
+                            <!-- Name Column -->
+                            <ng-container matColumnDef="name">
+                                <th mat-header-cell *matHeaderCellDef> Name </th>
+                                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                            </ng-container>
+
+                            <!-- Weight Column -->
+                            <ng-container matColumnDef="weight">
+                                <th mat-header-cell *matHeaderCellDef> Weight </th>
+                                <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+                            </ng-container>
+
+                            <!-- Symbol Column -->
+                            <ng-container matColumnDef="symbol">
+                                <th mat-header-cell *matHeaderCellDef> Symbol </th>
+                                <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                        </table>
+
+                        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                    </div>
                 </mat-expansion-panel>
                 <mat-expansion-panel [disabled]="true">
                     <mat-expansion-panel-header>
@@ -81,6 +112,32 @@
                             Manage Cafe
                         </mat-panel-title>
                     </mat-expansion-panel-header>
+                    <div>
+                        <mat-card>
+                            <mat-card-content>
+                                <form [formGroup]="foodForm" (ngSubmit)="addFoodItem(cafe.cafeId)">
+                                    <p>
+                                        <mat-form-field>
+                                            <input type="text" matInput placeholder="Food Id" formControlName="foodId" required>
+                                        </mat-form-field>
+                                    </p>
+                                    <p>
+                                        <mat-form-field>
+                                            <input type="text" matInput placeholder="Food Name" formControlName="foodName" required>
+                                        </mat-form-field>
+                                    </p>
+                                    <p>
+                                        <mat-form-field>
+                                            <input type="text" matInput placeholder="Food Price" formControlName="foodPrice" required>
+                                        </mat-form-field>
+                                    </p>
+                                    <div class="button">
+                                        <button type="submit" mat-button disabled>Add Food Item</button>
+                                    </div>
+                                </form>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
                     <mat-action-row>
                         <button mat-button (click)="removeCafe(cafe.cafeId)">Remove Cafe</button>
                     </mat-action-row>
