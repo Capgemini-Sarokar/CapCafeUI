@@ -19,10 +19,10 @@ export class CafeUserService {
   }
 
   saveUser (user: User) : void {
-    console.log(user);
+    //console.log(user);
     this.loggedInUser = user;
-    sessionStorage.setItem("currentUser", JSON.stringify(this.loggedInUser));
-    console.log(this.loggedInUser);
+    localStorage.setItem("currentUser", JSON.stringify(this.loggedInUser));
+    //console.log(this.loggedInUser);
   }
 
   signUp (signUpForm: any) : Observable<User>{
@@ -43,6 +43,7 @@ export class CafeUserService {
   clearUser () : void {
     this.loggedInUser = null;
     sessionStorage.clear();
+    localStorage.removeItem("currentUser");
   }
 
   updateUserDetails (form : any) : Observable<User> {

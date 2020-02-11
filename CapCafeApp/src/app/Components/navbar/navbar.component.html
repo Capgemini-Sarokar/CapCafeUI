@@ -2,6 +2,7 @@
     <mat-toolbar-row>
         <span routerLink="/">Capgemini Cafe</span>
         <span class="fill-remaining-space"></span>
+        <button mat-button routerLink="/helpdesk" *ngIf="userLoggedIn">Help Desk</button>
         <button mat-button routerLink="/login" *ngIf="!userLoggedIn">Login</button>
         <button mat-button *ngIf="userLoggedIn" [matMenuTriggerFor]="userMenu">{{user.name}}</button>
         <mat-menu #userMenu="matMenu">

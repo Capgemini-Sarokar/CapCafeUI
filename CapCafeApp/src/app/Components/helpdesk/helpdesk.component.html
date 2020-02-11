@@ -1,0 +1,164 @@
+<div class="container" style="padding: 5%">
+    <mat-card>
+        <mat-card-title>Help Desk</mat-card-title>
+        <mat-card-content>
+            <form [formGroup]="form" style="width: 100%;">
+                <p>
+                    <mat-form-field>
+                        <input type="text" matInput formControlName="orderId" placeholder="Enter complaint Order Id" maxlength="10" class="mat-form-field">
+                        <mat-hint>Order Id</mat-hint>
+                    </mat-form-field>
+                </p>
+                <p>
+                    <mat-form-field>
+                        <textarea matInput formControlName="comments" rows="5" placeholder="Enter your comments here" class="mat-form-field"></textarea>
+                        <mat-hint>Comments</mat-hint>
+                    </mat-form-field>
+                </p>
+                <p *ngIf="formError" class="error">
+                    {{ formErrorString }}
+                </p>
+                <div class="button">
+                    <button type="submit" mat-button (click)="raiseTicket()">Raise Ticket</button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    View Tickets
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <mat-panel-description>
+                <div class="container">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>ORDER ID</th>
+                                <th>TICKET ID</th>
+                                <th>STATUS</th>
+                                <th>COMMENTS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1000001108</td>
+                                <td>1111100018</td>
+                                <td>Pending</td>
+                                <td>Transaction related</td>
+                            </tr>
+                            <tr>
+                                <td>1000001107</td>
+                                <td>1111100017</td>
+                                <td>Pending</td>
+                                <td>Refund Related</td>
+                            </tr>
+                            <tr>
+                                <td>1000001106</td>
+                                <td>1111100016</td>
+                                <td>Pending</td>
+                                <td>Transaction related</td>
+                            </tr>
+                            <tr>
+                                <td>1000001105</td>
+                                <td>1111100015</td>
+                                <td>Closed</td>
+                                <td>Refund Related</td>
+                            </tr>
+                            <tr>
+                                <td>1000001104</td>
+                                <td>1111100014</td>
+                                <td>Pending</td>
+                                <td>My transaction failed</td>
+                            </tr>
+                            <tr>
+                                <td>1000001103</td>
+                                <td>1111100013</td>
+                                <td>Closed</td>
+                                <td>I didnot recieve refund</td>
+                            </tr>
+                            <tr>
+                                <td>1000001102</td>
+                                <td>1111100012</td>
+                                <td>Pending</td>
+                                <td>Refund Related</td>
+                            </tr>
+                            <tr>
+                                <td>1000001101</td>
+                                <td>1111100011</td>
+                                <td>Pending</td>
+                                <td>Refund Related</td>
+                            </tr>
+                            <tr>
+                                <td>1000001110</td>
+                                <td>1111100010</td>
+                                <td>Pending</td>
+                                <td>Refund Related</td>
+                            </tr>
+                            <tr>
+                                <td>1000001119</td>
+                                <td>1111100009</td>
+                                <td>Closed</td>
+                                <td>Incomplete Payment</td>
+                            </tr>
+                            <tr>
+                                <td>1000001118</td>
+                                <td>1111100008</td>
+                                <td>Closed</td>
+                                <td>Incomplete Payment</td>
+                            </tr>
+                            <tr>
+                                <td>1000001117</td>
+                                <td>1111100007</td>
+                                <td>Closed</td>
+                                <td>Incomplete Payment</td>
+                            </tr>
+                            <tr>
+                                <td>1000001116</td>
+                                <td>1111100006</td>
+                                <td>Closed</td>
+                                <td>Incomplete Payment</td>
+                            </tr>
+                            <tr>
+                                <td>1000001115</td>
+                                <td>1111100005</td>
+                                <td>Closed</td>
+                                <td>Incomplete Payment</td>
+                            </tr>
+                            <tr>
+                                <td>1000001114</td>
+                                <td>1111100004</td>
+                                <td>Closed</td>
+                                <td>Incomplete Payment</td>
+                            </tr>
+                            <tr>
+                                <td>1000001113</td>
+                                <td>1111100003</td>
+                                <td>Closed</td>
+                                <td>Incomplete Payment</td>
+                            </tr>
+                            <tr>
+                                <td>1000001112</td>
+                                <td>1111100002</td>
+                                <td>Closed</td>
+                                <td>Incomplete Payment</td>
+                            </tr>
+                            <tr>
+                                <td>1000001111</td>
+                                <td>1111100001</td>
+                                <td>Closed</td>
+                                <td>Incomplete Payment</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </mat-panel-description>
+            <!-- <mat-action-row>
+                <button mat-button (click)="removeCafe(cafe.cafeId)">Remove Cafe</button>
+            </mat-action-row> -->
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>

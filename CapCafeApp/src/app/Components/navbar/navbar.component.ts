@@ -20,6 +20,11 @@ export class NavbarComponent implements OnInit, DoCheck {
   ngOnInit() {
     if (this.userService.profile() !== null) {
       this.user = this.userService.profile();
+      this.userLoggedIn = true;
+    } else if (localStorage.getItem("currentUser") !== null) {
+      this.user = JSON.parse(localStorage.getItem("currentUser"));
+      this.userService.saveUser(this.user);
+      this.userLoggedIn = true;
     } else {
       this.userLoggedIn = false;
     }
@@ -33,11 +38,19 @@ export class NavbarComponent implements OnInit, DoCheck {
     if (this.user === null) {
       this.userLoggedIn = false;
     }
+    if (localStorage.getItem("currentUser") === null) {
+      this.userLoggedIn = false;
+    } else {
+      this.userLoggedIn = true;
+      this.user = JSON.parse(localStorage.getItem("currentUser"));
+      this.userService.saveUser(this.user);
+    }
   }
 
   userLogOut () {
     console.log("LogOut Called!");
     this.userLoggedIn = false;
+    localStorage.removeItem("currentUser");
     sessionStorage.clear();
     this.user = null; 
     this.userService.clearUser();

@@ -12,9 +12,11 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
 import { LoginComponent } from './Components/login/login.component';
 import { RegistrationComponent } from './Components/registration/registration.component';
 import { ProfileComponent } from './Components/profile/profile.component';
-import { CafeUserService } from './Services/cafe-user.service';
 import { CafeMainComponent } from './Components/cafe-main/cafe-main.component';
+
+import { CafeUserService } from './Services/cafe-user.service';
 import { CafeCafeService } from './Services/cafe-cafe.service';
+import { HelpdeskComponent } from './Components/helpdesk/helpdesk.component';
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import { CafeCafeService } from './Services/cafe-cafe.service';
     LoginComponent,
     RegistrationComponent,
     ProfileComponent,
-    CafeMainComponent
+    CafeMainComponent,
+    HelpdeskComponent
   ],
   imports: [
     FormsModule,
