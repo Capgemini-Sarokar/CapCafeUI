@@ -13,7 +13,12 @@ export class MenuService {
   }
 
   getFoodItemsForCafe(cafeId : string) : Observable<Array<Menu>> {
-    let foodByIdUrl = "http://localhost:9093/user-portal/menu/getFoodByCafeId/" + cafeId;
+    let foodByIdUrl = "http://localhost:9093/menu/getFoodByCafeId/" + cafeId;
     return this.http.get<Array<Menu>>(foodByIdUrl);
+  }
+
+  addFoodItem (form : any) : Observable<void> {
+    let addFoodUrl = "http://localhost:9093/menu/addFoodItem";
+    return this.http.post<void>(addFoodUrl, form);
   }
 }

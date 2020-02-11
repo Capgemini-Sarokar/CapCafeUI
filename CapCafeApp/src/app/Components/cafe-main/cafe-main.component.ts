@@ -3,6 +3,7 @@ import { CafeCafeService } from 'src/app/Services/cafe-cafe.service';
 import { CafeUserService } from 'src/app/Services/cafe-user.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MenuService } from 'src/app/Services/menu.service';
+import { Cafe } from 'src/app/models/cafe.model';
 
 @Component({
   selector: 'app-cafe-main',
@@ -15,7 +16,7 @@ export class CafeMainComponent implements OnInit, DoCheck {
   private userRole: string = "customer";
 
   private cafes = [];
-  private menu = [];
+  private menus = [];
   private temp = [];
 
   private imgUrls = ["../../../assets/a.jpg", "../../../assets/b.jpg",
@@ -26,6 +27,13 @@ export class CafeMainComponent implements OnInit, DoCheck {
     cafeName: new FormControl(''),
     cafeOwner: new FormControl(''),
     location: new FormControl('')
+  });
+
+  public foodForm: FormGroup = new FormGroup({
+    foodId: new FormControl(''),
+    cafeId: new FormControl({value:'', hidden : true}),
+    foodName: new FormControl(''),
+    foodPrice: new FormControl('')
   });
 
   // Booleans
@@ -39,13 +47,11 @@ export class CafeMainComponent implements OnInit, DoCheck {
   async loadDataFromServer () {
     await this.loadCafeDetails();
     console.log(this.cafes);
-    this.cafes.forEach(cafe => {
-      let menuForCafe = this.loadFoodDetails(cafe.cafeId).catch(error => {
-        console.log(error);
-      });
-      this.menu.push(menuForCafe);
-    });
-    console.log(this.menu);
+    for (let i = 0; i < this.cafes.length; i++) {
+      let menuForCafe = await this.loadFoodDetails(this.cafes[i].cafeId);
+      this.menus.push(menuForCafe);
+    }
+    console.log(this.menus);
   }
 
   loadCafeDetails() : Promise<any> {
@@ -85,6 +91,9 @@ export class CafeMainComponent implements OnInit, DoCheck {
   }
 
   ngOnInit(): void {
+    this.menus = [];
+    this.cafes = [];
+    this.temp = [];
     this.loadDataFromServer();
   }
 
@@ -130,6 +139,27 @@ export class CafeMainComponent implements OnInit, DoCheck {
       console.log(error)
     });
     this.form.reset();
+    this.ngOnInit();
+  }
+
+  async addFoodItem(givenCafeId : string) {
+    console.log("In Add Food Item");
+    this.foodForm.patchValue({cafeId : givenCafeId});
+    console.log(this.foodForm.value);
+    let x = await new Promise((resolve, reject) => {
+      this.menuService.addFoodItem(this.foodForm.value).subscribe(
+        item => {
+          console.log(item);
+          resolve(item);
+        },
+        error => {
+          reject(error);
+        }
+      );
+    }).catch(error => {
+      console.log(error);
+    });
+    this.foodForm.reset();
     this.ngOnInit();
   }
 }
