@@ -41,6 +41,7 @@ export class RegistrationComponent implements OnInit {
       this.formErrorString = "We were not able to register you, please try again later";
       console.log(this.formErrorString);
       this.formError = true;
+      return;
     });
     this.registrationSuccess = true;
     this.form.reset();
