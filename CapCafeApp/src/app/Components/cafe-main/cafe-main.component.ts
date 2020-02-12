@@ -4,6 +4,8 @@ import { CafeUserService } from 'src/app/Services/cafe-user.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MenuService } from 'src/app/Services/menu.service';
 import { Cafe } from 'src/app/models/cafe.model';
+import { Menu } from 'src/app/models/menu.model';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-cafe-main',
@@ -18,6 +20,9 @@ export class CafeMainComponent implements OnInit, DoCheck {
   private cafes = [];
   private menus = [];
   private temp = [];
+
+  displayedColumns: string[] = ['foodName', 'foodPrice'];
+  private cafeDataStructure : { [id : string] : Array<Menu>; } = {};
 
   private imgUrls = ["../../../assets/a.jpg", "../../../assets/b.jpg",
     "../../../assets/c.jpg", "../../../assets/a.jpg", "../../../assets/b.jpg", "../../../assets/c.jpg"];
@@ -50,9 +55,11 @@ export class CafeMainComponent implements OnInit, DoCheck {
     for (let i = 0; i < this.cafes.length; i++) {
       let menuForCafe = await this.loadFoodDetails(this.cafes[i].cafeId);
       this.menus.push(menuForCafe);
+      console.log(menuForCafe);
+      this.cafeDataStructure[this.cafes[i].cafeId] = menuForCafe;
     }
     console.log(this.menus);
-    this.cafeDetailsLoadingFailed = this.menuDetailsLoadingFailed = false;
+    console.log(this.cafeDataStructure);
   }
 
   loadCafeDetails() : Promise<any> {
@@ -115,6 +122,19 @@ export class CafeMainComponent implements OnInit, DoCheck {
       this.cafeService.removeCafe(cafeId).subscribe(
         item => {
           console.log(item, "Cafe removed");
+          resolve(item);
+        },
+        error => {
+          reject(error);
+        }
+      );
+    }).catch(error => {
+      console.log(error);
+    });
+    let y = await new Promise ((resolve, reject) => {
+      this.menuService.removeMenuOfCafe(cafeId).subscribe(
+        item => {
+          console.log(item, "Menu Removed");
           resolve(item);
         },
         error => {

@@ -21,4 +21,9 @@ export class MenuService {
     let addFoodUrl = "http://localhost:9093/menu/addFoodItem";
     return this.http.post<void>(addFoodUrl, form);
   }
+
+  removeMenuOfCafe (cafeId : string) : Observable<any> {
+    let removeMenuUrl = "http://localhost:9093/menu/removeMenu/" + cafeId;
+    return this.http.get<any>(removeMenuUrl);
+  }
 }
