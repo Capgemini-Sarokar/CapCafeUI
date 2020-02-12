@@ -106,6 +106,9 @@ export class CafeMainComponent implements OnInit, DoCheck {
     this.cafes = [];
     this.temp = [];
     this.loadDataFromServer();
+    if (this.userRole === 'admin') {
+      this.displayedColumns.push('manage');
+    } 
   }
 
   ngDoCheck(): void {
@@ -184,6 +187,24 @@ export class CafeMainComponent implements OnInit, DoCheck {
       console.log(error);
     });
     this.foodForm.reset();
+    this.ngOnInit();
+  }
+
+  async removeFoodItem(cafeId : string, foodId : string) {
+    console.log("In Remove");
+    let x = await new Promise ((resolve, reject) => {
+      this.menuService.removeFoodItem(cafeId, foodId).subscribe(
+        item => {
+          console.log(item);
+          resolve(item);
+        },
+        error => {
+          reject(error);
+        }
+      );
+    }).catch(error => {
+      console.log(error);
+    });
     this.ngOnInit();
   }
 }

@@ -26,4 +26,9 @@ export class MenuService {
     let removeMenuUrl = "http://localhost:9093/menu/removeMenu/" + cafeId;
     return this.http.get<any>(removeMenuUrl);
   }
+
+  removeFoodItem (cafeId : string, foodId : string) {
+    let removeFoodUrl = "http://localhost:9093/menu/removeFoodById/" + cafeId +"/" + foodId;
+    return this.http.delete<boolean>(removeFoodUrl);
+  }
 }

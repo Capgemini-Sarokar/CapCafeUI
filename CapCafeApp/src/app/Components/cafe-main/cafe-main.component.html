@@ -69,35 +69,34 @@
                         </mat-expansion-panel-header>
                         <div class="mat-elevation-z8">
                             <table mat-table [dataSource]="cafeDataStructure[cafe.cafeId]">
-
-                                <!-- Position Column -->
                                 <ng-container matColumnDef="foodId">
                                     <th mat-header-cell *matHeaderCellDef> Food Id </th>
                                     <td mat-cell *matCellDef="let element"> {{element.foodId}} </td>
                                 </ng-container>
-
-                                <!-- Name Column -->
                                 <ng-container matColumnDef="cafeId">
                                     <th mat-header-cell *matHeaderCellDef> Cafe Id </th>
                                     <td mat-cell *matCellDef="let element"> {{element.cafeId}} </td>
                                 </ng-container>
 
-                                <!-- Weight Column -->
                                 <ng-container matColumnDef="foodName">
                                     <th mat-header-cell *matHeaderCellDef> Food Name </th>
                                     <td mat-cell *matCellDef="let element"> {{element.foodName}} </td>
                                 </ng-container>
-
-                                <!-- Symbol Column -->
                                 <ng-container matColumnDef="foodPrice">
                                     <th mat-header-cell *matHeaderCellDef> Food Price </th>
                                     <td mat-cell *matCellDef="let element"> {{element.foodPrice}} </td>
                                 </ng-container>
-
+                                <ng-container matColumnDef="manage">
+                                    <th mat-header-cell *matHeaderCellDef> Manage </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <div class="button">
+                                            <button type="submit" mat-button (click)="removeFoodItem(cafe.cafeId, element.foodId)">Remove</button>
+                                        </div>
+                                    </td>
+                                </ng-container>
                                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                             </table>
-
                             <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
                         </div>
                     </mat-expansion-panel>
