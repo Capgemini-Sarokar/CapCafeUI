@@ -47,7 +47,11 @@ export class CafeMainComponent implements OnInit, DoCheck {
   private panelOpenState: boolean = false;
 
 
-  constructor(private menuService: MenuService, private cafeService: CafeCafeService, private userService: CafeUserService) { }
+  constructor(private menuService: MenuService, private cafeService: CafeCafeService, private userService: CafeUserService) { 
+    if (this.userService.role() === 'admin') {
+      this.displayedColumns.push('manage');
+    } 
+  }
 
   async loadDataFromServer () {
     await this.loadCafeDetails();
@@ -106,9 +110,6 @@ export class CafeMainComponent implements OnInit, DoCheck {
     this.cafes = [];
     this.temp = [];
     this.loadDataFromServer();
-    if (this.userRole === 'admin') {
-      this.displayedColumns.push('manage');
-    } 
   }
 
   ngDoCheck(): void {
