@@ -1,7 +1,6 @@
 export class Menu {
-
-    foodTd: string;
-    cafeId: string;
-    foodName: string;
-    foodPrice: string;
-  }
+  public foodId: string;
+  public cafeId: string;
+  public foodName: string;
+  public foodPrice: string;
+}

@@ -1,29 +1,28 @@
-import { Component, OnInit } from '@angular/core';
-import { User } from './models/user';
-import { UserDataServiceService } from './user-data-service.service';
+import { Component, OnInit, Input, DoCheck } from '@angular/core';
+import { User } from './models/user.model';
 import { Router } from '@angular/router';
+import { CafeUserService } from './Services/cafe-user.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, DoCheck {
+
   private user : User = null;
 
-  subscription: any;
   ngOnInit(): void {
-    this.userLoggedIn = false;
-    // this.user = new User ();
-    // this.user.name = "Dummy";
-    this.subscription = this.userDataService.userData$.subscribe(
-      item => {
-        if (this.user === null) {
-          this.user = item;
-          this.userLoggedIn = true;
-        }
-      }
-    );
+    console.log(this.user);
+    if (this.user === null)
+      this.route.navigate(['login']);
+  }
+
+ ngDoCheck(): void {
+    if (this.userService.profile() !== null) {
+      this.user = this.userService.profile();
+      this.userLoggedIn = true;
+    }
   }
 
   title : string = 'CapCafeApp';
@@ -33,17 +32,7 @@ export class AppComponent implements OnInit {
   userRoleType : string = 'admin'; // used in role mapping for admin and customer
   userLoggedIn : boolean = false; // used to set login and logout status and change menus
 
-  constructor (private userDataService : UserDataServiceService, private route:Router) {
+  constructor (private userService: CafeUserService, private route:Router) {
 
-  }
-
-  logOut() {
-    this.userLoggedIn = false;
-    this.user = null; 
-    this.route.navigate(['']);
-  }
-
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
+  }  
 }
