@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './Components/login/login.component';
-import { RegistrationComponent } from './Components/registration/registration.component';
-import { ProfileComponent } from './Components/profile/profile.component';
+
+import { HomepageComponent } from './Components/Shared/homepage/homepage.component';
+import { LoginComponent } from './Components/Shared/login/login.component';
+import { RegistrationComponent } from './Components/Shared/registration/registration.component';
+import { ProfileComponent } from './Components/Shared/profile/profile.component';
 import { CafeMainComponent } from './Components/cafe-main/cafe-main.component';
 import { HelpdeskComponent } from './Components/helpdesk/helpdesk.component';
 
@@ -10,7 +12,7 @@ const routes: Routes = [
   { path : "login", component : LoginComponent },
   { path : "registration", component : RegistrationComponent },
   { path : "profile", component : ProfileComponent },
-  { path : "", component : CafeMainComponent },
+  { path : "", component : HomepageComponent },
   { path : "helpdesk", component : HelpdeskComponent }
 ];
 

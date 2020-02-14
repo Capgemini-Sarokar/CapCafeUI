@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../models/user.model';
+import { User } from '../../../models/user.model';
 import { FormGroup, FormControl } from '@angular/forms';
 import { CafeUserService } from 'src/app/Services/cafe-user.service';
 

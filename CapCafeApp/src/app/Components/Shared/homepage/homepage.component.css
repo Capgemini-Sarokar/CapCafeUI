@@ -1,0 +1,13 @@
+.homepage-tile-screen {
+    height: 100%;
+    padding: 0%;
+    margin: auto;
+}
+
+mat-grid-list {
+    height: max-content;
+}
+
+mat-grid-tile {
+    background: lightblue;
+}
