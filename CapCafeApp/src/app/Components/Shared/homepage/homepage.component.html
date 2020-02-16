@@ -1,8 +1,11 @@
-<div class="homepage-tile-screen">
-    <mat-grid-list cols="2" rowHeight="2:1">
-        <mat-grid-tile>1</mat-grid-tile>
-        <mat-grid-tile>2</mat-grid-tile>
-        <mat-grid-tile>3</mat-grid-tile>
-        <mat-grid-tile>4</mat-grid-tile>
+<div id="homepageBackgroundScreen">
+    <mat-grid-list cols="{{gridColumns}}" rowHeight="{{gridRowHeight}}" gutterSize="1">
+        <mat-grid-tile *ngFor="let tile of tiles" [colspan]="1" [rowspan]="1">
+            <img src="{{tile.imageUrl}}">
+        </mat-grid-tile>
     </mat-grid-list>
+</div>
+
+<div id="homepageLogoScreen" [ngStyle]="{'top.px': logoScreenTop}">
+    <p>Hi!</p>
 </div>
