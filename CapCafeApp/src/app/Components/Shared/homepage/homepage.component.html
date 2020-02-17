@@ -1,0 +1,11 @@
+<div id="homepageBackgroundScreen">
+    <mat-grid-list cols="{{gridColumns}}" rowHeight="{{gridRowHeight}}" gutterSize="1">
+        <mat-grid-tile *ngFor="let tile of tiles" [colspan]="1" [rowspan]="1">
+            <img src="{{tile.imageUrl}}">
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
+<div id="homepageLogoScreen" [ngStyle]="{'top.px': logoScreenTop}">
+    <p>Hi!</p>
+</div>

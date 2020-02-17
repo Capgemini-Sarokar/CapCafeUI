@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, DoCheck } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { User } from './models/user.model';
 import { Router } from '@angular/router';
 import { CafeUserService } from './Services/cafe-user.service';
@@ -15,7 +15,7 @@ export class AppComponent implements OnInit, DoCheck {
   ngOnInit(): void {
     console.log(this.user);
     if (this.user === null)
-      this.route.navigate(['login']);
+      this.route.navigate(['']);
   }
 
  ngDoCheck(): void {
