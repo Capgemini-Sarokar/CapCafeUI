@@ -5,15 +5,17 @@ import { HomepageComponent } from './Components/Shared/homepage/homepage.compone
 import { LoginComponent } from './Components/Shared/login/login.component';
 import { RegistrationComponent } from './Components/Shared/registration/registration.component';
 import { ProfileComponent } from './Components/Shared/profile/profile.component';
-import { CafeMainComponent } from './Components/cafe-main/cafe-main.component';
-import { HelpdeskComponent } from './Components/helpdesk/helpdesk.component';
+import { HelpdeskComponent } from './Components/User/helpdesk/helpdesk.component';
+import { UserLoginGuardService } from './Guards/user-login-guard.service';
+import { CustomerGuardService } from './Guards/customer-guard.service';
 
 const routes: Routes = [ 
   { path : "login", component : LoginComponent },
   { path : "registration", component : RegistrationComponent },
-  { path : "profile", component : ProfileComponent },
-  { path : "", component : HomepageComponent },
-  { path : "helpdesk", component : HelpdeskComponent }
+  { path : "profile", component : ProfileComponent, canActivate: [ UserLoginGuardService ]},
+  { path : "", component : HomepageComponent, canActivate: [ UserLoginGuardService ] },
+  { path : "helpdesk", component : HelpdeskComponent, canActivate: [ UserLoginGuardService, CustomerGuardService ] },
+  { path : "admin-dashboard", loadChildren: () => import('./Components/Admin/admin.module').then(m => m.AdminModule) }
 ];
 
 @NgModule({

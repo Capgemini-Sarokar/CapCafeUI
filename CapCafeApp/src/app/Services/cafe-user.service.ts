@@ -14,6 +14,10 @@ export class CafeUserService {
 
   }
 
+  isUserLoggedIn(): boolean {
+    return (this.loggedInUser !== null) ? (true) : (false);
+  }
+
   role () : string{
     return this.loggedInUser !== null ? this.loggedInUser.userRole : '';
   }
@@ -40,7 +44,7 @@ export class CafeUserService {
     return this.loggedInUser;
   }
 
-  clearUser () : void {
+  logout () : void {
     this.loggedInUser = null;
     sessionStorage.clear();
     localStorage.removeItem("currentUser");

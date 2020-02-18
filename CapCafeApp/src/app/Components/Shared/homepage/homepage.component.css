@@ -2,6 +2,13 @@
     z-index: 1;
 }
 
+.title {
+    color: white;
+    text-align: center;
+    margin-top: 20%;
+    font-size: 100px;
+}
+
 #homepageLogoScreen {
     z-index: 5;
     position: fixed;
@@ -11,8 +18,8 @@
     right: 0px;
     height: 100%;
     width: 100%;
-    opacity: 0.6;
-    /* background-color: darkgray; */
+    opacity: 0.8;
+    background-color: black;
     justify-content: center;
     justify-items: center;
     text-align: center;

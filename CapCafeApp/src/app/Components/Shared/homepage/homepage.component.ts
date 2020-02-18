@@ -69,19 +69,16 @@ export class HomepageComponent implements OnInit, OnDestroy {
   }
 
   loadImages(): void {
-    this.foodImageUrls.push("./assets/Images/a.jpg");
-    this.foodImageUrls.push("./assets/Images/b.jpg");
-    this.foodImageUrls.push("./assets/Images/c.jpg");
-    this.foodImageUrls.push("./assets/Images/d.jpg");
-    this.foodImageUrls.push("./assets/Images/e.jpeg");
-    this.foodImageUrls.push("./assets/Images/f.jpeg");
-    this.foodImageUrls.push("./assets/Images/g.jpeg");
-    this.foodImageUrls.push("./assets/Images/h.jpg");
-    this.foodImageUrls.push("./assets/Images/i.jpg");
-    this.foodImageUrls.push("./assets/Images/j.jpg");
-    this.foodImageUrls.push("./assets/Images/k.jpg");
-    this.foodImageUrls.push("./assets/Images/l.jpg");
-    this.foodImageUrls.push("./assets/Images/m.jpg");
+    this.foodImageUrls.push("./assets/Images/Food Images/a.jpg");
+    this.foodImageUrls.push("./assets/Images/Food Images/b.jpeg");
+    this.foodImageUrls.push("./assets/Images/Food Images/c.jpeg");
+    this.foodImageUrls.push("./assets/Images/Food Images/d.jpeg");
+    this.foodImageUrls.push("./assets/Images/Food Images/e.jpg");
+    this.foodImageUrls.push("./assets/Images/Food Images/f.jpg");
+    this.foodImageUrls.push("./assets/Images/Food Images/g.jpg");
+    this.foodImageUrls.push("./assets/Images/Food Images/h.jpg");
+    this.foodImageUrls.push("./assets/Images/Food Images/i.jpg");
+    this.foodImageUrls.push("./assets/Images/Food Images/j.jpg");
   }
 }
 

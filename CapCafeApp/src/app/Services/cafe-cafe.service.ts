@@ -26,4 +26,9 @@ export class CafeCafeService {
     let addCafeUrl = "http://localhost:9095/cafe-portal/addCafe";
     return this.http.post<void>(addCafeUrl, form);
   }
+
+  updateCafe (form : any) : Observable<void> {
+    let updateCafeUrl = "http://localhost:9095/cafe-portal/updateCafe";
+    return this.http.post<void>(updateCafeUrl, form);
+  }
 }

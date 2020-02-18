@@ -4,19 +4,28 @@
     margin: 100px 0px;
 }
 
-.example-card {
-    max-width: 400px;
+.profile-card {
+    width: 80%;
 }
 
 .mat-form-field {
     width: 100%;
-    min-width: 300px;
+    /* min-width: 300px; */
+    font-size: 125%;
+}
+
+p {
+    width: 100%;
 }
 
 mat-card-title,
 mat-card-content {
     display: flex;
     justify-content: center;
+}
+
+mat-card-content form {
+    width: 100%;
 }
 
 .error {

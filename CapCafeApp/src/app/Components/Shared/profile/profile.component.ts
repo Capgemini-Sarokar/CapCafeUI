@@ -10,13 +10,21 @@ import { CafeUserService } from 'src/app/Services/cafe-user.service';
 })
 export class ProfileComponent implements OnInit {
   enableEditMode() {
-    console.log("in edit Mode")
+    console.log("in edit mode")
     this.editMode = true;
     //this.form.get('employeeId').enable();
     this.form.get('emailId').enable();
     this.form.get('name').enable();
     this.form.get('phoneNumber').enable();
     //this.form.get('dateOfBirth').enable();
+  }
+
+  disableEditMode() {
+    console.log('in normal mode');
+    this.editMode = false;
+    this.form.get('emailId').disable();
+    this.form.get('name').disable();
+    this.form.get('phoneNumber').disable();
   }
 
   async saveUpdates() {

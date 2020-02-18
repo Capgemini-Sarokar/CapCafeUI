@@ -1,5 +1,4 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
-import { User } from './models/user.model';
 import { Router } from '@angular/router';
 import { CafeUserService } from './Services/cafe-user.service';
 
@@ -9,21 +8,6 @@ import { CafeUserService } from './Services/cafe-user.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, DoCheck {
-
-  private user : User = null;
-
-  ngOnInit(): void {
-    console.log(this.user);
-    if (this.user === null)
-      this.route.navigate(['']);
-  }
-
- ngDoCheck(): void {
-    if (this.userService.profile() !== null) {
-      this.user = this.userService.profile();
-      this.userLoggedIn = true;
-    }
-  }
 
   title : string = 'CapCafeApp';
   appTitle : string = 'CapCafe';
@@ -35,4 +19,17 @@ export class AppComponent implements OnInit, DoCheck {
   constructor (private userService: CafeUserService, private route:Router) {
 
   }  
+
+  ngOnInit(): void {
+    console.log(localStorage.getItem("currentUser") === null);
+    if(localStorage.getItem("currentUser") !== null) {
+      this.userService.saveUser(JSON.parse(localStorage.getItem("currentUser")));
+    }
+  }
+
+ ngDoCheck(): void {
+    if (this.userService.profile() !== null) {
+      this.userLoggedIn = true;
+    }
+  }
 }

@@ -13,9 +13,6 @@ import { EventEmitter } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  @Output()
-  loginEvent = new EventEmitter<User>();
-
   // Booleans
   private formSubmitted: boolean = false;
   private formError: boolean = false;
@@ -49,7 +46,7 @@ export class LoginComponent implements OnInit {
         this.formSubmitted = false;
       });
       if (!this.formError) {
-        this.loginEvent.emit(this.user);
+        
         this.userService.saveUser(this.user);
         this.formSubmitted = false;
         this.loginSuccess = true;

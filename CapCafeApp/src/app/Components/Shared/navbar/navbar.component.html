@@ -1,0 +1,20 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <span routerLink="/"><mat-icon>home</mat-icon> Capgemini Cafe</span>
+        <span class="fill-remaining-space"></span>
+        <button mat-button routerLink="admin-dashboard" *ngIf="userLoggedIn && this.userService.role() === 'admin'"><mat-icon>dashboard</mat-icon> Dashboard</button>
+        <button mat-button routerLink="/helpdesk" *ngIf="userLoggedIn && this.userService.role() === 'customer'"><mat-icon>live_help</mat-icon> Help Desk</button>
+        <button mat-button routerLink="/login" *ngIf="!userLoggedIn"><mat-icon>power_settings_new</mat-icon> Login</button>
+        <button mat-button *ngIf="userLoggedIn" [matMenuTriggerFor]="userMenu"><mat-icon>arrow_drop_down_circle</mat-icon> {{this.userService.profile().name}}</button>
+        <mat-menu #userMenu="matMenu">
+            <button mat-menu-item routerLink="/profile">
+                <mat-icon>account_circle</mat-icon>
+                <span>My Profile</span>
+            </button>
+            <button mat-menu-item (click)="userLogOut()">
+                <mat-icon>power_settings_new</mat-icon>
+                <span>Logout</span>
+            </button>
+        </mat-menu>
+    </mat-toolbar-row>
+</mat-toolbar>
