@@ -1,1 +1,85 @@
-<p>dashboard works!</p>
+<mat-sidenav-container class="example-container">
+    <mat-sidenav mode="side" opened style="max-width: 500px">
+        <div id="search-box">
+            <mat-card>
+                <mat-card-content>
+                    <table id="search-bar">
+                        <tr>
+                            <td>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Search</mat-label>
+                                    <input matInput type="text" [(ngModel)]="searchBoxValue" (ngModelChange)="performSearch($event)">
+                                    <button mat-button *ngIf="searchBoxValue" matSuffix mat-icon-button aria-label="Clear" (click)="searchBoxValue=''">
+                                      <mat-icon>close</mat-icon>
+                                    </button>
+                                </mat-form-field>
+                            </td>
+                            <td>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Search Cafe By</mat-label>
+                                    <mat-select value="name" (selectionChange)="triggerResearch()">
+                                        <mat-option value="name">Name</mat-option>
+                                        <mat-option value="location">Location</mat-option>
+                                        <mat-option value="owner">Owner</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </td>
+                        </tr>
+                    </table>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <mat-divider></mat-divider>
+        <div *ngIf="!cafeDataLoaded && !cafeDataLoadingFailed" class="spinner-justifyer">
+            <mat-spinner style="margin:0 auto;"></mat-spinner>
+            <p style="margin:0 auto;">Loading Cafe Data...</p>
+        </div>
+        <div id="cafe-cards" *ngIf="cafeDataLoaded">
+            <!-- <mat-selection-list #cafes>
+                <mat-list-option *ngFor="let cafe of cafeList">
+                    <app-cafe-widget [(cafe)]="cafe"></app-cafe-widget>
+                </mat-list-option>
+            </mat-selection-list> -->
+            <div *ngFor="let cafe of cafeList" style="padding: 0.5%;">
+                <app-cafe-widget [(cafe)]="cafe"></app-cafe-widget>
+            </div>
+            <div id="add-cafe-form-button" *ngIf="!cafeFormOpen">
+                <button mat-raised-button (click)="openAddCafeForm()" style="width: 100%;"><mat-icon>add</mat-icon></button>
+            </div>
+            <div *ngIf="cafeFormOpen">
+                <form [formGroup]="form" style="padding: 0%;">
+                    <mat-card>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Cafe Name</mat-label>
+                            <input type="text" matInput formControlName="cafeName">
+                        </mat-form-field><br>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Cafe Owner</mat-label>
+                            <input type="text" matInput formControlName="cafeOwner">
+                        </mat-form-field><br>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Cafe Location</mat-label>
+                            <input type="text" matInput formControlName="location">
+                        </mat-form-field>
+                    </mat-card>
+                </form>
+                <div class="button">
+                    <button (click)="saveNewCafeDetails()" mat-button><mat-icon>add</mat-icon></button>
+                    <button (click)="openAddCafeForm()" mat-button><mat-icon>close</mat-icon></button>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="cafeDataLoadingFailed && !cafeDataLoaded">
+            <mat-card style="text-align: center; color: red;">
+                <p>Could not load data from server</p>
+                <button mat-button matSuffix mat-icon-button aria-label="Refresh" (click)="loadCafeData()">
+                    <mat-icon>refresh</mat-icon>
+                </button>
+            </mat-card>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        Main content
+        <p>dashboard works!</p>
+    </mat-sidenav-content>
+</mat-sidenav-container>

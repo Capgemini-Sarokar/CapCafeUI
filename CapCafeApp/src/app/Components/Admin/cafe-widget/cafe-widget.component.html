@@ -1,0 +1,30 @@
+<div id="cafe-widget-container">
+    <div (click)="openMenu()" class="example-ripple-container mat-elevation-z4" matRipple [matRippleCentered]="rippleCentered" [matRippleDisabled]="rippleDisabled" [matRippleUnbounded]="rippleUnbounded" [matRippleColor]="color">
+        <form [formGroup]="form" style="padding: 0%;">
+            <mat-card>
+                <mat-form-field appearance="outline">
+                    <mat-label>Cafe Name</mat-label>
+                    <input type="text" matInput placeholder="{{cafe.cafeName}}" formControlName="cafeName">
+                </mat-form-field><br>
+                <mat-form-field appearance="outline">
+                    <mat-label>Cafe Owner</mat-label>
+                    <input type="text" matInput placeholder="{{cafe.cafeOwner}}" formControlName="cafeOwner">
+                </mat-form-field><br>
+                <mat-form-field appearance="outline">
+                    <mat-label>Cafe Location</mat-label>
+                    <input type="text" matInput placeholder="{{cafe.location}}" formControlName="location">
+                </mat-form-field>
+            </mat-card>
+        </form>
+    </div>
+    <div>
+        <div class="button" *ngIf="!editMode">
+            <button (click)="enableEditMode()" mat-button><mat-icon>edit</mat-icon></button>
+            <button (click)="deleteCafe()" mat-button><mat-icon>delete</mat-icon></button>
+        </div>
+        <div class="button" *ngIf="editMode">
+            <button (click)="saveUpdatedCafeDetails()" mat-button><mat-icon>save</mat-icon></button>
+            <button (click)="disableEditMode()" mat-button><mat-icon>close</mat-icon></button>
+        </div>
+    </div>
+</div>

@@ -21,7 +21,6 @@ export class AppComponent implements OnInit, DoCheck {
   }  
 
   ngOnInit(): void {
-    console.log(localStorage.getItem("currentUser") === null);
     if(localStorage.getItem("currentUser") !== null) {
       this.userService.saveUser(JSON.parse(localStorage.getItem("currentUser")));
     }

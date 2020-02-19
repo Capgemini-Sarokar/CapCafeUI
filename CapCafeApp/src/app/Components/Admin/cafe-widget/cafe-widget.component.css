@@ -1,0 +1,26 @@
+mat-form-field {
+    width: 100%;
+    font-size: 12px;
+}
+
+#cafe-widget-container {
+    background-image: url("../../../../assets/Images/Restaurant Images/c.jpg");
+    height: auto;
+    max-width: initial;
+    border: 1%;
+    border-radius: 15px;
+}
+
+mat-card {
+    opacity: 0.9;
+    border-radius: 15px;
+}
+
+.button {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.background {
+    /* background-image: url("../../../../assets/Images/Restaurant Images/a.jpg"); */
+}
