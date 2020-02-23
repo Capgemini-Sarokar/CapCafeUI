@@ -8,9 +8,11 @@
                             <td>
                                 <mat-form-field appearance="outline">
                                     <mat-label>Search</mat-label>
-                                    <input matInput type="text" [(ngModel)]="searchBoxValue" (ngModelChange)="performSearch($event)">
-                                    <button mat-button *ngIf="searchBoxValue" matSuffix mat-icon-button aria-label="Clear" (click)="searchBoxValue=''">
-                                      <mat-icon>close</mat-icon>
+                                    <input matInput type="text" [(ngModel)]="searchBoxValue"
+                                        (ngModelChange)="performSearch($event)">
+                                    <button mat-button *ngIf="searchBoxValue" matSuffix mat-icon-button
+                                        aria-label="Clear" (click)="searchBoxValue=''">
+                                        <mat-icon>close</mat-icon>
                                     </button>
                                 </mat-form-field>
                             </td>
@@ -40,15 +42,22 @@
                     <app-cafe-widget [(cafe)]="cafe"></app-cafe-widget>
                 </mat-list-option>
             </mat-selection-list> -->
-            <div *ngFor="let cafe of cafeList" style="padding: 0.5%;">
-                <app-cafe-widget [(cafe)]="cafe"></app-cafe-widget>
+            <div *ngFor="let cafe of showedCafeList" style="padding: 0.5%;">
+                <app-cafe-widget [(cafe)]="cafe" (menuViewRequest)="menuViewRequestHandler($event)" (cafeDeleteRequest)="cafeDeleteEventHandler($event)"
+                (cafeUpdateRequest)="cafeUpdateEventHandler($event)"></app-cafe-widget>
             </div>
             <div id="add-cafe-form-button" *ngIf="!cafeFormOpen">
-                <button mat-raised-button (click)="openAddCafeForm()" style="width: 100%;"><mat-icon>add</mat-icon></button>
+                <button mat-raised-button (click)="openAddCafeForm()" style="width: 100%;">
+                    <mat-icon>add</mat-icon>
+                </button>
             </div>
             <div *ngIf="cafeFormOpen">
                 <form [formGroup]="form" style="padding: 0%;">
                     <mat-card>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Cafe Id</mat-label>
+                            <input type="text" matInput formControlName="cafeId">
+                        </mat-form-field><br>
                         <mat-form-field appearance="outline">
                             <mat-label>Cafe Name</mat-label>
                             <input type="text" matInput formControlName="cafeName">
@@ -64,8 +73,12 @@
                     </mat-card>
                 </form>
                 <div class="button">
-                    <button (click)="saveNewCafeDetails()" mat-button><mat-icon>add</mat-icon></button>
-                    <button (click)="openAddCafeForm()" mat-button><mat-icon>close</mat-icon></button>
+                    <button (click)="saveNewCafeDetails()" mat-button>
+                        <mat-icon>add</mat-icon>
+                    </button>
+                    <button (click)="openAddCafeForm()" mat-button>
+                        <mat-icon>close</mat-icon>
+                    </button>
                 </div>
             </div>
         </div>
@@ -79,7 +92,110 @@
         </div>
     </mat-sidenav>
     <mat-sidenav-content>
-        Main content
-        <p>dashboard works!</p>
+        <div *ngIf="!MenuDataLoaded && MenuDataLoading" class="spinner-justifyer">
+            <mat-spinner style="margin:0 auto;"></mat-spinner>
+            <p style="margin:0 auto;">Loading Menu Data...</p>
+        </div>
+        <div class="container" style="padding: 5%">
+            <div>
+                <mat-accordion>
+                    <mat-expansion-panel [disabled]="false">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Cafe Menu
+                            </mat-panel-title>
+                            <mat-panel-description>
+
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                        <div class="mat-elevation-z8">
+                            <table mat-table [dataSource]="cafeDataStructure[currentCafeId]">
+                                <ng-container matColumnDef="foodId">
+                                    <th mat-header-cell *matHeaderCellDef> Food Id </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.foodId}} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="cafeId">
+                                    <th mat-header-cell *matHeaderCellDef> Cafe Id </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.cafeId}} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="foodName">
+                                    <th mat-header-cell *matHeaderCellDef> Food Name </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.foodName}} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="foodPrice">
+                                    <th mat-header-cell *matHeaderCellDef> Food Price </th>
+                                    <td mat-cell *matCellDef="let element"> {{element.foodPrice}} </td>
+                                </ng-container>
+                                <ng-container matColumnDef="manage">
+                                    <th mat-header-cell *matHeaderCellDef> Manage </th>
+                                    <td mat-cell *matCellDef="let element">
+                                        <div class="button">
+                                            <button type="submit" mat-button
+                                                (click)="removeFoodItem(element.cafeId, element.foodId)">Remove</button>
+                                        </div>
+                                    </td>
+                                </ng-container>
+                                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                            </table>
+                            <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+                        </div>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel [disabled]="true">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Reviews & Ratings
+                            </mat-panel-title>
+                            <mat-panel-description>
+                                Under Construction
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+                    </mat-expansion-panel>
+                    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>
+                                Manage Cafe
+                            </mat-panel-title>
+                        </mat-expansion-panel-header>
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                <mat-panel-title>
+                                    Add Food Item
+                                </mat-panel-title>
+                            </mat-expansion-panel-header>
+                            <div>
+                                <mat-card>
+                                    <mat-card-content>
+                                        <form [formGroup]="foodForm" (ngSubmit)="addFoodItem(currentCafeId)">
+                                            <p>
+                                                <mat-form-field>
+                                                    <input type="text" matInput placeholder="Food Id"
+                                                        formControlName="foodId" required>
+                                                </mat-form-field>
+                                            </p>
+                                            <p>
+                                                <mat-form-field>
+                                                    <input type="text" matInput placeholder="Food Name"
+                                                        formControlName="foodName" required>
+                                                </mat-form-field>
+                                            </p>
+                                            <p>
+                                                <mat-form-field>
+                                                    <input type="number" matInput placeholder="Food Price"
+                                                        formControlName="foodPrice" required>
+                                                </mat-form-field>
+                                            </p>
+                                            <div class="button">
+                                                <button type="submit" mat-button>Add<mat-icon>add</mat-icon></button>
+                                            </div>
+                                        </form>
+                                    </mat-card-content>
+                                </mat-card>
+                            </div>
+                        </mat-expansion-panel>
+                    </mat-expansion-panel>
+                </mat-accordion>
+            </div>
+        </div>
     </mat-sidenav-content>
 </mat-sidenav-container>

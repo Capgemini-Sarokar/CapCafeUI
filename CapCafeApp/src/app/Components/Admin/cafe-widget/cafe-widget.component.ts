@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Cafe } from 'src/app/models/cafe.model';
 import { FormGroup, FormControl } from '@angular/forms';
 import { CafeCafeService } from 'src/app/Services/cafe-cafe.service';
@@ -10,6 +10,10 @@ import { Observable } from 'rxjs';
   styleUrls: ['./cafe-widget.component.css']
 })
 export class CafeWidgetComponent implements OnInit {
+
+  @Output() menuViewRequest: EventEmitter<string> =   new EventEmitter();
+  @Output() cafeDeleteRequest: EventEmitter<string> =   new EventEmitter();
+  @Output() cafeUpdateRequest: EventEmitter<string> =   new EventEmitter();
 
   @Input() private cafe: Cafe;
 
@@ -25,7 +29,7 @@ export class CafeWidgetComponent implements OnInit {
 
   ngOnInit() {
     this.form = new FormGroup({
-      cafeId: new FormControl({value: this.cafe.cafeId}),
+      cafeId: new FormControl({value: this.cafe.cafeId, disabled: true}),
       cafeName: new FormControl({value: this.cafe.cafeName, disabled: true}),
       cafeOwner: new FormControl({value: this.cafe.cafeOwner, disabled: true}),
       location: new FormControl({value: this.cafe.location, disabled: true})
@@ -39,7 +43,9 @@ export class CafeWidgetComponent implements OnInit {
 
   openMenu(): void {
     if (!this.rippleDisabled) {
-      console.log("In open Menu");
+      console.log("In open Menu of", this.cafe.cafeId);
+      // send message + cafeId to dashboard to load data
+      this.menuViewRequest.emit(this.cafe.cafeId);
     } else {
 
     }
@@ -69,7 +75,7 @@ export class CafeWidgetComponent implements OnInit {
   async saveUpdatedCafeDetails() {
     let x = await this.sendUpdatedFormData().then(
       onresolve => {
-
+        this.cafeUpdateRequest.emit(this.cafe.cafeId);
       },
       onreject => {
         
@@ -78,6 +84,7 @@ export class CafeWidgetComponent implements OnInit {
   }
 
   sendUpdatedFormData(): Promise<any> {
+    console.log(this.form.value);
     return this.cafeService.updateCafe(this.form.value).toPromise().catch(this.handleError);
   }
 
@@ -100,6 +107,7 @@ export class CafeWidgetComponent implements OnInit {
     let x = await this.sendDeleteRequest(this.cafe.cafeId).then(
       onresolve => {
         console.log("Cafe Removed!");
+        this.cafeDeleteRequest.emit(this.cafe.cafeId);
       },
       onreject => {
         console.log("Could not remove cafe");
