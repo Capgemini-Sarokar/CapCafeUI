@@ -29,7 +29,7 @@
             </p>
             <p>
                 <mat-form-field>
-                    <input matInput [matDatepicker]="picker" placeholder="Date Of Birth" formControlName="dateOfBirth" required>
+                    <input matInput [matDatepicker]="picker" [max]="maxDate" placeholder="Date Of Birth" formControlName="dateOfBirth" required>
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker startView="year" [startAt]="1940"></mat-datepicker>
                 </mat-form-field>

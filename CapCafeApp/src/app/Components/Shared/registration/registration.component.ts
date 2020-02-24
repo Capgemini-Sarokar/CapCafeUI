@@ -16,17 +16,21 @@ export class RegistrationComponent implements OnInit {
   private formSubmitted : boolean = false;
   private registrationSuccess : boolean = false;
 
+  private maxDate: Date;
+
   form: FormGroup = new FormGroup({
     employeeId: new FormControl(''),
     emailId: new FormControl(''),
     password: new FormControl(''),
     name: new FormControl(''),
     phoneNumber: new FormControl(''),
-    dateOfBirth: new FormControl(''),
+    dateOfBirth: new FormControl({disabled: true}),
     userRole: new FormControl('')
   });
 
-  constructor(private userService: CafeUserService, private route: Router) { }
+  constructor(private userService: CafeUserService, private route: Router) { 
+    this.maxDate = new Date(Date.now());
+  }
 
   ngOnInit() {
 
