@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Menu } from '../models/menu';
+import { Menu } from '../models/menu.model';
 import { Ordering } from '../models/ordering';
 
 const httpOptions ={
