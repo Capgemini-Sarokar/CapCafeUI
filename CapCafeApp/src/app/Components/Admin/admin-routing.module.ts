@@ -16,8 +16,8 @@ const routes: Routes = [
     RouterModule
   ],
   providers: [
-      CafeCafeService,
-      CafeUserService
+    CafeCafeService,
+    CafeUserService
   ]
 })
 export class AdminRoutingModule { }

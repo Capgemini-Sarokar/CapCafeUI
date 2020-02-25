@@ -1,0 +1,27 @@
+.button {
+    background-image: url("src/assets/Images/Restaurant Images/p35718-150883274959eef5edc5b61.jpg");
+}
+
+body {
+    counter-reset: section;
+}
+
+.container {
+    margin-top: 8%;
+}
+
+.inner {
+    overflow: hidden;
+}
+
+.inner img {
+    transition: all 1.5s ease
+}
+
+.inner:hover img {
+    transform: scale(1.5);
+}
+
+div {
+    align-content: center;
+}

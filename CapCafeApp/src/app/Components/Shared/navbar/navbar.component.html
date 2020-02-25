@@ -2,6 +2,7 @@
     <mat-toolbar-row>
         <button routerLink="/" mat-button><mat-icon>home</mat-icon> Capgemini Cafe</button>
         <span class="fill-remaining-space"></span>
+        <button mat-button routerLink="/user-dashboard" *ngIf="userLoggedIn && this.userService.role() === 'customer'"><mat-icon>library_add_check</mat-icon> Order Food</button>
         <button mat-button routerLink="admin-dashboard" *ngIf="userLoggedIn && this.userService.role() === 'admin'"><mat-icon>dashboard</mat-icon> Dashboard</button>
         <button mat-button routerLink="/helpdesk" *ngIf="userLoggedIn && this.userService.role() === 'customer'"><mat-icon>live_help</mat-icon> Help Desk</button>
         <button mat-button routerLink="/login" *ngIf="!userLoggedIn"><mat-icon>power_settings_new</mat-icon> Login</button>

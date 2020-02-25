@@ -15,7 +15,8 @@ const routes: Routes = [
   { path : "profile", component : ProfileComponent, canActivate: [ UserLoginGuardService ]},
   { path : "", component : HomepageComponent, canActivate: [ UserLoginGuardService ] },
   { path : "helpdesk", component : HelpdeskComponent, canActivate: [ UserLoginGuardService, CustomerGuardService ] },
-  { path : "admin-dashboard", loadChildren: () => import('./Components/Admin/admin.module').then(m => m.AdminModule) }
+  { path : "admin-dashboard", loadChildren: () => import('./Components/Admin/admin.module').then(m => m.AdminModule) },
+  { path : "user-dashboard", loadChildren: () => import('./Components/User/user.module').then(m => m.UserModule) }
 ];
 
 @NgModule({
